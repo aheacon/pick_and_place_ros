@@ -8,7 +8,7 @@
 
 # Scope
 Tasks that will be done
-1. Getting started with ROS2 and myCobot 320 (**done** ✅)
+1. <span style="color:green;">Getting started with ROS2 and myCobot 320</span> (**done** ✅)
 2. Create environment of 3 objects (hammer 🔨, screwdriver 🪛 and scissors ✂️) (**in progress** 🔴 )
 3. Use camera at the top and capture pictures
 4. Implement CNN
