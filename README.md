@@ -18,14 +18,14 @@ Tasks that will be done
 
 ## 1. Getting started with ROS2 and myCobot
 
-### Based on
+### 1.1 Based on
 1. [mycobot ros2 tutorial](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.1-ROS2%E7%9A%84%E5%AE%89%E8%A3%85.html)
 2. [mycobot_ros2 GitHub](https://github.com/elephantrobotics/mycobot_ros2)
 3. [myCobot YT](https://www.youtube.com/watch?v=-Jo_IJ8RaXc)
 4. [GitBook myCobot](https://docs.elephantrobotics.com/docs/gitbook-en/)
 5. [myCobot Isaac Gym](https://www.hackster.io/Elephant-Robotics-Official/mycobot-gripping-task-reinforcement-learning-with-isaac-gym-5621db)
 
-### Steps to build
+### 1.2 Steps to build
 - Make sure you have installed ROS2
 - Make sure that `underlay` workspace is properly sourced `source /opt/ros/humble/setup.bash`
 - Make sure you have installed `sudo apt install ros-humble-joint-state-publisher-gui`
@@ -34,7 +34,7 @@ $ mkdir -p ros2_ws/src
 $ cd ros2_ws/src
 $ git clone https://github.com/elephantrobotics/mycobot_ros2 -b humble --depth 1
 $ cd ..
-# there is no resdep files (see optional)
+# there is no resdep files (see `Optional and troubleshooting`)
 ```
 - Build package (from `package.xml`) with all its dependency and show console output while building
 - Alternative to create `COLCON_IGNORE` file in the directory to skip building of specific package (didn't test this)
@@ -42,34 +42,41 @@ $ cd ..
 # Build target package
 $ colcon build --packages-up-to mycobot_320 --event-handlers console_direct+
 ```
-- Result
-```bash
-# Output
-Installing camera_display script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
-Installing detect_marker script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
-Installing follow_display script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
-Installing following_marker script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
-Installing listen_real script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
-Installing listen_real_of_topic script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
-Installing opencv_camera script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
-Installing simple_gui script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
-Installing slider_control script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
-Installing teleop_keyboard script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
-writing list of installed files to '/home/anel/GitHub/pick_and_place_ros/ros2_ws/build/mycobot_320/install.log'
-Finished <<< mycobot_320 [1.03s]           
 
-Summary: 4 packages finished [10.9s]
+  <details closed>
+  <summary> Result of build </summary>
+  <br>
 
-# Check directories
-$ ll
-total 24
-drwxrwxr-x 6 anel anel 4096 Oct  5 16:21 ./
-drwxrwxr-x 4 anel anel 4096 Oct  5 15:50 ../
-drwxrwxr-x 6 anel anel 4096 Oct  5 16:22 build/
-drwxrwxr-x 6 anel anel 4096 Oct  5 16:22 install/
-drwxrwxr-x 3 anel anel 4096 Oct  5 16:21 log/
-drwxrwxr-x 3 anel anel 4096 Oct  5 15:51 src/
-```
+  ```bash
+  # Output
+  Installing camera_display script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
+  Installing detect_marker script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
+  Installing follow_display script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
+  Installing following_marker script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
+  Installing listen_real script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
+  Installing listen_real_of_topic script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
+  Installing opencv_camera script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
+  Installing simple_gui script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
+  Installing slider_control script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
+  Installing teleop_keyboard script to /home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320/lib/mycobot_320
+  writing list of installed files to '/home/anel/GitHub/pick_and_place_ros/ros2_ws/build/mycobot_320/install.log'
+  Finished <<< mycobot_320 [1.03s]           
+
+  Summary: 4 packages finished [10.9s]
+
+  # Check directories
+  $ ll
+  total 24
+  drwxrwxr-x 6 anel anel 4096 Oct  5 16:21 ./
+  drwxrwxr-x 4 anel anel 4096 Oct  5 15:50 ../
+  drwxrwxr-x 6 anel anel 4096 Oct  5 16:22 build/
+  drwxrwxr-x 6 anel anel 4096 Oct  5 16:22 install/
+  drwxrwxr-x 3 anel anel 4096 Oct  5 16:21 log/
+  drwxrwxr-x 3 anel anel 4096 Oct  5 15:51 src/
+  ```
+  </details>
+
+
 
 - Install `mycobot` dependency
 ```bash
@@ -81,16 +88,18 @@ $ pip install pymycobot --upgrade
 $ source install/setup.bash
 ```
 
-### Use with rviz2
-- Start `rviz2`
-```bash
-$ rviz2
-```
-- Execute launch file
+### 1.3 Start robot
+- To start the robot, execute launch file
 ```bash
 $ ros2 launch mycobot_320 test.launch.py
 ```
-#### Results
+
+- To visiualize the robot start `rviz2`
+```bash
+$ rviz2
+```
+
+#### 1.3.1 Results
 <details closed>
 <summary> Result picture of launching the robot </summary>
 <br>
@@ -127,7 +136,18 @@ $ ros2 launch mycobot_320 test.launch.py
 
 
 
-### Optional
+### 1.4 Real robot connection 💁
+- TODO 💁 for later
+- Check [this](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.4-rviz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/) for serial connection 
+
+
+## 2. Create environment of 3 objects (hammer 🔨, screwdriver 🪛 and scissors ✂️)
+- **in progress** 🔴
+
+# Other literature
+[1] [ROS2 Humble tutorial](https://docs.ros.org/en/humble/Tutorials.html)
+
+# Optional and troubleshooting
 
 #### Rosdep missing  for mycobot
 - This is step to check compatilbity before building (not needed for now).
@@ -151,14 +171,3 @@ $ ros2 launch mycobot_320 test.launch.py
 [ERROR] [launch]: Caught exception in launch (see debug for traceback): "package 'joint_state_publisher_gui' not found, searching: ['/home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320', '/home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_communication', '/home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_interfaces', '/home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_description', '/opt/ros/humble']"
 ```
 - To fix it install package `sudo apt install ros-humble-joint-state-publisher-gui`
-
-### Real robot connection
-- TODO 💁 for later
-- Check [this](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.4-rviz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/) for serial connection 
-
-
-## 2. Create environment of 3 objects (hammer 🔨, screwdriver 🪛 and scissors ✂️)
-- **in progress** 🔴
-
-# Other literature
-[1] [ROS2 Humble tutorial](https://docs.ros.org/en/humble/Tutorials.html)
