@@ -3,7 +3,7 @@
 ### Prerequisites
 - Make sure you have installed [ROS2](0_ros2_getting_started.md)
 - Make sure that `underlay` workspace is properly sourced `source /opt/ros/humble/setup.bash`
-- Make sure you have installed [Webots](0_webots_getting_started.md)
+- Make sure you have installed [Webots](webots/0_webots_getting_started.md)
 
 ### 1.1 Based on
 1. [mycobot_webots](https://github.com/elephantrobotics/mycobot_webots)

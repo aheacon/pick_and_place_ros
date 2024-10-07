@@ -19,7 +19,7 @@ Tasks that will be done
 ## 1. Getting started with ROS2 and myCobot
 
 - Refer to [Getting started with ROS2 and myCobot 320](1_getting_started_with_ros2_and_mycobot320.md) (**done** ✅)
-- Refer to [Getting started with ROS2 and myCobot with Webots simulator](1_getting_started_with_mycobot_webots.md.md) (**done** ✅)
+- Refer to [Getting started with ROS2 and myCobot with Webots simulator](1_getting_started_with_mycobot_webots.md) (**done** ✅)
 
 
 ## 2. Create environment of 3 objects (hammer 🔨, screwdriver 🪛 and scissors ✂️)
