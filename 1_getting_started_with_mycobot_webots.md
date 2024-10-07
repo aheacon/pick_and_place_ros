@@ -93,6 +93,12 @@ $ ros2 launch my_package robot_launch.py
 # 10. Publish the messages
 $ ros2 topic pub /cmd_vel geometry_msgs/Twist  "linear: { x: 0.1 }"
 # 11. To avoid obstaces we need node with dinstsance sensors
+#     <device> tag in URDF file of robot loads the plugins of webots_ros2_driver
+# 12. add new node and update according to the Advanced tutorial
+$ touch my_package/my_package/obstacle_avoider.py # add content
+# 13. Build and check (it should work)
+$ colcon build && source install/setup.bash
+$ ros2 launch my_package robot_launch.py 
 ```
 - Example for [UR45e](https://github.com/cyberbotics/webots_ros2/wiki/Example-Universal-Robots)
   - Used `launch` files for:
@@ -104,7 +110,8 @@ $ ros2 topic pub /cmd_vel geometry_msgs/Twist  "linear: { x: 0.1 }"
     ```
 
 ### 3.1 Setting up robot simulation for mycobot
-
+- [URDF file of 280 pi](mycobot_description/urdf/mycobot_280_pi/mycobot_280_pi_with_pump.urdf)
+- 
 ### 2. Troubleshooting
 
 #### 2.1 Opening the world file
