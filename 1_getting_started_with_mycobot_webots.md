@@ -40,8 +40,70 @@
 
 
 
-### 2. Create custom package and use on mycobot
-TODO
+### 3. Setting up robot simulation
+- Based on [Setting up a robot simulation](https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html)
+- Based on [Setting up a robot simulation (Advanced)](https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html)
+
+- Usage of `webots_ros2` package as interface between ROS2 and Webots and `webots_ros2_driver` subpackage.
+  - Other examples of [webots_ros2](https://github.com/cyberbotics/webots_ros2/wiki/Examples)
+- Steps:
+```bash
+# 1. Create the package/node with dependencies
+$ ros2 pkg create --build-type ament_python --license Apache-2.0 --node-name my_robot_driver my_package --dependencies rclpy geometry_msgs webots_ros2_driver
+# 2. Add launch file
+$ cd my_package && mkdir launch && mkdir worlds
+# list files
+$ cd .. && tree
+.
+└── my_package
+    ├── launch
+    ├── LICENSE
+    ├── my_package
+    │   ├── __init__.py
+    │   └── my_robot_driver.py
+    ├── package.xml
+    ├── resource
+    │   └── my_package
+    ├── setup.cfg
+    ├── setup.py
+    ├── test
+    │   ├── test_copyright.py
+    │   ├── test_flake8.py
+    │   └── test_pep257.py
+    └── worlds
+# 3. Add world example file
+$ wget https://docs.ros.org/en/humble/_downloads/5ad123fc6a8f1ea79553d5039728084a/my_world.wbt -P my_package/worlds/
+# Check
+$ ls my_package/worlds/
+my_world.wbt
+# 4. Extend webots_ros2_driver by creating custom plugin
+#    this is ROS node == robot controller, than will use Webots API
+#    One can use `webots_ros2_control` that creates interface with `ros2_control`
+#    Note: webots_ros2_universal_robot uses `webots_ros2_driver` in launch file for robot nodes 
+#          and `webots_ros2_control` for `resource/ur5e_with_gripper.urdf`
+# 5. Create the plugin in my_robot_driver.py
+# 6. Create the `my_robot.urdf` file in resource folder with name `MyRobotDriver` (name of class in plugin/node)
+#    If plugin would need input parameter we would add `parameterName` tag in resource
+# 7. Create launch file
+#    More details in https://github.com/cyberbotics/webots_ros2/wiki/References-Nodes
+$ cd launch && touch robot_launch.py # add content
+# 8. Edit setup.py
+# 9. Start simulatino
+$ ros2 launch my_package robot_launch.py
+# 10. Publish the messages
+$ ros2 topic pub /cmd_vel geometry_msgs/Twist  "linear: { x: 0.1 }"
+# 11. To avoid obstaces we need node with dinstsance sensors
+```
+- Example for [UR45e](https://github.com/cyberbotics/webots_ros2/wiki/Example-Universal-Robots)
+  - Used `launch` files for:
+    1. simulator `robot_world_launch.py` (workaround can be started manually)
+    2. to spawn robot nodes `robot_nodes_launch.py` (workaround can be staretd manually - but how to connect to webots?)
+    - Location of files
+    ```bash
+    $ ll - /opt/ros/humble/share/webots_ros2_universal_robot/launch
+    ```
+
+### 3.1 Setting up robot simulation for mycobot
 
 ### 2. Troubleshooting
 
