@@ -65,20 +65,11 @@ $ colcon build --packages-up-to mycobot_320 --event-handlers console_direct+
 - Install `mycobot` dependency
 ```bash
 $ pip install pymycobot --upgrade
-# Successfully installed msgpack-1.0.8 packaging-24.1 pymycobot-3.5.3 pyserial-3.5 python-can-4.4.2 wrapt-1.16.0
-```
-- Source `overlay` (and add it to `~/.bashrc`) to configure ROS2 environment
-```bash
-$ source install/setup.bash
-```
-
-### 1.3 Start robot
-- To start the robot, execute launch file
-```bash
-$ ros2 launch mycobot_320 test.launch.py
-```
-
-- To visiualize the robot start `rviz2`
+# Successfully installed xt format (row:2): unsupported number of columns:3. Num of fields is 26
+        	Test:       	TestCSVFileParser_E2E/Should_return_data
+        	Messages:   	No error expected
+    csv_parser_test.go:265: invalid rowText format (row:2): unsupported number of columns:3. Num of fields is 26
+--- FAIL: TestCSVFileParser_E2E (0.00s) start `rviz2`
 ```bash
 $ rviz2
 ```
