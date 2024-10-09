@@ -125,3 +125,34 @@ $ ros2 launch mycobot_320 test.launch.py
 - Check [this](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.4-rviz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/) for serial connection 
 - Check [Basic Learning, unbox robot](https://www.youtube.com/watch?app=desktop&v=WPDMkrLcMIE)
 - Check [other](https://www.youtube.com/watch?app=desktop&v=yhFuFvxx8aI)
+
+
+### 1.5 Troubleshooting ⛑️
+
+#### 1.5.1. Rosdep missing  for mycobot
+- This is step to check compatilbity before building (not needed for now).
+```bash
+$ rosdep install -i --from-path src --rosdistro humble -y
+ERROR: the following packages/stacks could not have their rosdep keys resolved
+to system dependencies:
+...
+mycobot_280: Cannot locate rosdep definition for [actionlib]
+mycobot_320: Cannot locate rosdep definition for [actionlib]
+mycobot_320pi: Cannot locate rosdep definition for [actionlib]
+...
+```
+- No fix needed
+
+#### 1.5.2. Launch file problem
+```bash
+$ ros2 launch mycobot_320 test.launch.py
+[INFO] [launch]: All log files can be found below /home/anel/.ros/log/2024-10-05-16-49-37-621332-anel-27323
+[INFO] [launch]: Default logging verbosity is set to INFO
+[ERROR] [launch]: Caught exception in launch (see debug for traceback): "package 'joint_state_publisher_gui' not found, searching: ['/home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_320', '/home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_communication', '/home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_interfaces', '/home/anel/GitHub/pick_and_place_ros/ros2_ws/install/mycobot_description', '/opt/ros/humble']"
+```
+- To fix it install package `sudo apt install ros-humble-joint-state-publisher-gui`
+
+
+### 1.6. Other literature 📖
+[1] [ROS2 Humble tutorial](https://docs.ros.org/en/humble/Tutorials.html)
+
