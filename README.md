@@ -8,7 +8,7 @@
 
 # Scope 1
 Tasks that will be done
-1. <span style="color:green;">Getting started with ROS2 and myCobot</span> (**installation done** ✅, **problem with simulaton** 🔴)
+1. <span style="color:green;">Getting started with ROS2 and myCobot</span>
 2. Create environment of 3 objects (hammer 🔨, screwdriver 🪛 and scissors ✂️) 
 3. Use camera at the top and capture pictures
 4. Implement CNN
@@ -20,15 +20,16 @@ Tasks that will be done
 
 - Refer to [Getting started with ROS2 and myCobot 320](1_getting_started_with_ros2_and_mycobot320.md) (**done** ✅)
 - Refer to [Getting started with ROS2 and myCobot with Webots simulator](1_getting_started_with_mycobot_webots.md) (**cannot be done with ROS2** :x:)
-### Blocker :x:
-- Eveything else is blocked since there is no way to simulate. 
-- Options:
-1. Use `ubuntu 20.4` (`ROS1`) - issue: VM settings
-2. Use `ROS2` and `Gazebo` - issue: learning `Gazebo`
-3. Postpone this scope and switch to [Scope 2 (`NVIDIA Isaac`)](#scope2)
+  - Eveything else is blocked since there is no way to simulate interface (no `launch` file between ROS2 and Webots). 
+    - Options:
+    1. Use `ubuntu 20.4` (`ROS1`) - issue: VM settings
+    2. Use `ROS2` and `Gazebo` - issue: learning `Gazebo`
+    3. Postpone this scope and switch to [Scope 2 (`NVIDIA Isaac`)](#scope2)
 
 
 # <a name="scope2"></a>Scope 2
-1. Getting started with `NVIDIA Isaac (**in progress** 🧑‍💼 )
+### Blocker :x:
+1. Getting started with `NVIDIA Isaac Sim` (**currently cannot be done on my hardware**:x:)
+  - Needs better GPU and Isaac Sim is not rendering
 
 
