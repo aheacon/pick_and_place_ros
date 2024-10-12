@@ -19,6 +19,7 @@ Tasks that will be done
 ## 1. Getting started with ROS2 and myCobot
 
 - Refer to [Getting started with ROS2 and myCobot 320](1_getting_started_with_ros2_and_mycobot320.md) (**done** ✅)
+- Refer to [Getting started with ROS2 and myCobot with Gazebo simulator][1_getting_started_with_mycobot_gazebo](**in progress** 🔴)
 - Refer to [Getting started with ROS2 and myCobot with Webots simulator](1_getting_started_with_mycobot_webots.md) (**cannot be done with ROS2** :x:)
   - Eveything else is blocked since there is no way to simulate interface (no `launch` file between ROS2 and Webots). 
     - Options:
