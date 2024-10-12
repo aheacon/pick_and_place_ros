@@ -1,0 +1,14 @@
+<robot name="mycobot">
+  <link name="link1">
+    <visual>
+      <geometry>
+        <mesh filename="package://mycobot_ros2_description/meshes/mycobot_320/link1.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://mycobot_ros2_description/meshes/mycobot_320/link1.dae"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>
