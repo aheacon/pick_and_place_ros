@@ -99,8 +99,56 @@
       # Try disable SVM mode
       # Update grup
       $ sudo bash -c 'echo GRUB_CMDLINE_LINUX="amd_iommu=off" >> /etc/default/grub' && sudo update-grup && sudo reboot
+      # Didn't tried ^
 
+      # For new GPU like RTX 4070 2x12GB (1k) we need to have proper power supply (recommended 650W)
+      # I couldn't find Watts , but here are some usefull commands
+      $ sudo dmidecode --type 39
+      $ sudo lshw -c power
+      $ upower -i /org/freedesktop/UPower/devices/battery_BAT0
+      $ sudo apt-get install lm-sensors
+      $ sudo sensors-detect -y
+      $ sensors
+      asus_wmi_sensors-virtual-0
+      Adapter: Virtual device
+      CPU Core Voltage:          1.49 V  
+      +12V Voltage:             12.23 V  
+      +5V Voltage:               5.01 V  
+      3VSB Voltage:              3.33 V  
+      CPU Fan:                  864 RPM
+      Chassis Fan 1:              0 RPM
+      Chassis Fan 2:              0 RPM
+      Chassis Fan 3:              0 RPM
+      AIO Pump:                   0 RPM
+      Water Pump:                 0 RPM
+      CPU OPT:                    0 RPM
+      CPU Temperature:          +28.0°C  
+      Motherboard Temperature:  +34.0°C  
+      Chipset Temperature:      +45.0°C  
+      Tsensor 1 Temperature:   +216.0°C  
 
+      nvme-pci-0700
+      Adapter: PCI adapter
+      Composite:    +34.9°C  (low  = -273.1°C, high = +84.8°C)
+                            (crit = +84.8°C)
+      Sensor 1:     +34.9°C  (low  = -273.1°C, high = +65261.8°C)
+      Sensor 2:     +41.9°C  (low  = -273.1°C, high = +65261.8°C)
+
+      asusec-isa-0000
+      Adapter: ISA adapter
+      CPU Core:    917.00 mV 
+      CPU_Opt:        0 RPM
+      Chipset:      +45.0°C  
+      CPU:          +28.0°C  
+      Motherboard:  +34.0°C  
+      T_Sensor:     -40.0°C  
+      VRM:          +20.0°C  
+      CPU:           0.00 A  
+
+      k10temp-pci-00c3
+      Adapter: PCI adapter
+      Tctl:         +38.4°C  
+      Tdie:         +28.4°C 
       ```
 
       - NVIDIA Commands
