@@ -13,7 +13,6 @@ from ament_index_python import get_package_share_path
 
 
 def generate_launch_description():
-
     # Define filenames
     urdf_package = "mycobot_ros2_description"
     urdf_filename = "mycobot_320_m5_2022.urdf"
@@ -21,7 +20,7 @@ def generate_launch_description():
 
     # Set paths to important files
     pkg_share_description = FindPackageShare(urdf_package)
-    # Alternatively to get package share folder and join with subfolders
+    # Alternatively to get package share foreser and join with subforesers
     # pkg_share=  get_package_share_path("mycobot_ros2_description")
     # default_value = os.path.join(pkg_share, "urdf/mycobot_320_m5_2022/mycobot_320_m5_2022.urdf")
     default_urdf_model_path = PathJoinSubstitution(
@@ -117,20 +116,29 @@ def generate_launch_description():
         parameters=[{"use_sim_time": use_sim_time}],
     )
 
+    # rviz_node = Node(
+    #     name="rviz2",
+    #     package="rviz2",
+    #     executable="rviz2",
+    #     output="screen",
+    #     arguments=["-d", LaunchConfiguration(rviz_config_filename)],
+    # )
+
     # Create the launch description and populate
-    ld = LaunchDescription()
+    res = []
 
     # Declare the launch options
-    ld.add_action(declare_jsp_gui_cmd)
-    ld.add_action(declare_rviz_config_file_cmd)
-    ld.add_action(declare_urdf_model_path_cmd)
-    ld.add_action(declare_use_rviz_cmd)
-    ld.add_action(declare_use_sim_time_cmd)
+    res.append(declare_jsp_gui_cmd)
+    res.append(declare_rviz_config_file_cmd)
+    res.append(declare_urdf_model_path_cmd)
+    res.append(declare_use_rviz_cmd)
+    res.append(declare_use_sim_time_cmd)
 
     # Add any actions
-    ld.add_action(start_joint_state_publisher_cmd)
-    ld.add_action(start_joint_state_publisher_gui_cmd)
-    ld.add_action(start_robot_state_publisher_cmd)
-    ld.add_action(start_rviz_cmd)
+    res.append(start_joint_state_publisher_cmd)
+    res.append(start_joint_state_publisher_gui_cmd)
+    res.append(start_robot_state_publisher_cmd)
+    res.append(start_rviz_cmd)
+    # res.append(rviz_node) # not working
 
-    return ld
+    return LaunchDescription(res)

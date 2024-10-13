@@ -72,8 +72,12 @@ $ find install/ |grep -e rviz -e urdf -e launch
 ./install/mycobot_ros2_description/share/mycobot_ros2_description/urdf/mycobot_320_m5_2022.urdf
 ./install/mycobot_ros2_description/share/mycobot_ros2_description/urdf/mycobot_320_m5_2022.urdf
 ```
+- To launch it 
+```bash
+$ ros2 launch mycobot_ros2_description mycobot320.launch.py
+```
 
-Error becaues of wrong setup
+- Error becaues of wrong setup
 ```bash
 $ ros2 launch mycobot_ros2_description mycobot320.launch.py
 file 'mycobot320.launch.py' was found more than once in the share directory of package 'mycobot_ros2_description': ['/home/anel/GitHub/pick_and_place_ros/anel_ws/install/mycobot_ros2_description/share/mycobot_ros2_description/mycobot320.launch.py', '/home/anel/GitHub/pick_and_place_ros/anel_ws/install/mycobot_ros2_description/share/mycobot_ros2_description/launch/mycobot320.launch.py']
