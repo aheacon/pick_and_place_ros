@@ -52,6 +52,35 @@ $ ros2 run tf2_tools view_frame
 $ evince frames_2024-10-13_11.01.53.pdf 
 ```
 
+#### Launch file
+- [Based on this](https://automaticaddison.com/create-a-launch-file-for-a-simulated-robotic-arm-ros-2/)
+```bash
+$ mkdir anel_ws/mycobot_ros2_description/launch
+$ gedit mycobot320.launch.py
+$ mkdir anel_ws/mycobot_ros2_description/rviz
+```
+- Add to `setup.py`
+```python
+        ("share/" + package_name + "/urdf", glob("urdf/*")),
+        ("share/" + package_name + "/launch", glob("launch/*")),
+        ("share/" + package_name + "/rviz", glob("rviz/*")),
+```
+- As result these filese will be built with `colcon build` in `install` directory
+```bash
+$ find install/ |grep -e rviz -e urdf -e launch
+./install/mycobot_ros2_description/share/mycobot_ros2_description/launch/mycobot320.launch.py
+./install/mycobot_ros2_description/share/mycobot_ros2_description/urdf/mycobot_320_m5_2022.urdf
+./install/mycobot_ros2_description/share/mycobot_ros2_description/urdf/mycobot_320_m5_2022.urdf
+```
+
+Error becaues of wrong setup
+```bash
+$ ros2 launch mycobot_ros2_description mycobot320.launch.py
+file 'mycobot320.launch.py' was found more than once in the share directory of package 'mycobot_ros2_description': ['/home/anel/GitHub/pick_and_place_ros/anel_ws/install/mycobot_ros2_description/share/mycobot_ros2_description/mycobot320.launch.py', '/home/anel/GitHub/pick_and_place_ros/anel_ws/install/mycobot_ros2_description/share/mycobot_ros2_description/launch/mycobot320.launch.py']
+```
+
+Solution: Remove `build` directory  and start `colcon build`
+
 
 
 ## Mycobot 320 URDF file create
