@@ -20,6 +20,70 @@ $ git clone https://github.com/elephantrobotics/mycobot_ros2 -b humble --depth 1
 $ cd ..
 # there is no resdep files (see `Optional and troubleshooting`)
 ```
+<details closed>
+<summary> Check the URDF file - bug 🐛 ❌ fixed 💻 </summary>
+
+```bash
+$ sudo apt-get install ros-${ROS_DISTRO}-urdf-tutorial
+$ ros2 launch urdf_tutorial display.launch.py model:=/home/anel/GitHub/pick_and_place_ros/ros2_ws/src/mycobot_ros2/mycobot_description/urdf/mycobot_320_m5_2022/mycobot_320_m5_2022.urdf
+[INFO] [launch]: All log files can be found below /home/anel/.ros/log/2024-10-13-10-05-18-532420-anel-18124
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [robot_state_publisher-1]: process started with pid [18126]
+[INFO] [joint_state_publisher_gui-2]: process started with pid [18128]
+[INFO] [rviz2-3]: process started with pid [18130]
+[robot_state_publisher-1] [INFO] [1728806718.885357636] [robot_state_publisher]: got segment base
+[robot_state_publisher-1] [INFO] [1728806718.885452194] [robot_state_publisher]: got segment link1
+[robot_state_publisher-1] [INFO] [1728806718.885460760] [robot_state_publisher]: got segment link2
+[robot_state_publisher-1] [INFO] [1728806718.885466230] [robot_state_publisher]: got segment link3
+[robot_state_publisher-1] [INFO] [1728806718.885470919] [robot_state_publisher]: got segment link4
+[robot_state_publisher-1] [INFO] [1728806718.885475608] [robot_state_publisher]: got segment link5
+[robot_state_publisher-1] [INFO] [1728806718.885480186] [robot_state_publisher]: got segment link6
+[joint_state_publisher_gui-2] [INFO] [1728806719.467995466] [joint_state_publisher]: Waiting for robot_description to be published on the robot_description topic...
+[joint_state_publisher_gui-2] [INFO] [1728806719.475423519] [joint_state_publisher]: Centering
+[joint_state_publisher_gui-2] [INFO] [1728806719.539369567] [joint_state_publisher]: Centering
+[rviz2-3] [INFO] [1728806719.600012480] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-3] [INFO] [1728806719.600101668] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[rviz2-3] [INFO] [1728806719.648563810] [rviz2]: Stereo is NOT SUPPORTED
+```
+Picture of error:
+![alt text](error_urdf_tutorial_package.png)
+
+- To solve it we must change name of the parent `base` to `base_link` in `urdf` file
+```bash
+# Launch file https://github.com/ros/urdf_tutorial/tree/ros1/launch
+$ ros2 launch urdf_tutorial display.launch.py -s
+Arguments (pass arguments as '<name>:=<value>'):
+    'gui':
+        Flag to enable joint_state_publisher_gui. Valid choices are: ['true', 'false']
+        (default: 'true')
+
+    'rvizconfig':
+        Absolute path to rviz config file
+        (default: LocalVar('FindPackageShare(pkg='urdf_tutorial') + 'rviz' + 'urdf.rviz''))
+
+    'model':
+        Path to robot urdf file relative to urdf_tutorial package
+        (default: '<launch.substitutions.path_join_substitution.PathJoinSubstitution object at 0x742f329dc490>')
+
+    'jsp_gui':
+        Flag to enable joint_state_publisher_gui. Valid choices are: ['true', 'false']
+        (default: 'true')
+
+    'rviz_config':
+        Absolute path to rviz config file
+        (default: LocalVar('FindPackageShare(pkg='urdf_launch') + 'config' + 'urdf.rviz''))
+
+    'urdf_package':
+        The package where the robot description is located
+
+    'urdf_package_path':
+        The path to the robot description relative to the package root
+
+```
+Bug fixed
+![alt text](solved_error_urdf_tutorial_package.png)
+</details>
+
 - Build package (from `package.xml`) with all its dependency and show console output while building
 - Alternative to create `COLCON_IGNORE` file in the directory to skip building of specific package (didn't test this)
 ```bash
