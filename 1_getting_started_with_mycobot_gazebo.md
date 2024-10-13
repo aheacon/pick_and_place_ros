@@ -86,6 +86,14 @@ file 'mycobot320.launch.py' was found more than once in the share directory of p
 Solution: Remove `build` directory  and start `colcon build`
 
 
+### Simulate robotic arm in Gazebo and Ros2
+https://automaticaddison.com/how-to-simulate-a-robotic-arm-in-gazebo-ros-2/
+
+### Control robotic arm using ros2 control and gazebo
+https://automaticaddison.com/how-to-control-a-robotic-arm-using-ros-2-control-and-gazebo/
+
+
+
 
 ## Mycobot 320 URDF file create
 <detail closed>
