@@ -10,16 +10,14 @@ TODO
 ### 1.2 Steps to build
 <detail closed>
   <summary>
-    Installation process
+    TODO
   </summary>
-
-  Extensions for VSC: Microsoft ROS extension, XML Redhat, python, autoDocstring, 
-  
-  <details>
+</details>
 
 
 
 ### Know-how
+- Extensions for VSC: Microsoft ROS extension, XML Redhat, python, autoDocstring, 
 - URDF stored in package `mycobot_description` (see [this](https://automaticaddison.com/how-to-model-a-robotic-arm-with-a-urdf-file-ros-2/))
 - [Naming and organizing projects](https://automaticaddison.com/naming-and-organizing-packages-in-large-ros-2-projects/)
   - Based on [best practice](https://ros.org/reps/rep-0144.html)
@@ -38,15 +36,30 @@ TODO
       and [Gazebo (a robot simulation environment)](https://automaticaddison.com/how-to-simulate-a-robot-using-gazebo-and-ros-2/).
       TODOs ^
     - 
+#### Visualize
 - To visualize URDF file in RVIS
   - red - x, green - y, blue - z
 ```bash
 $ sudo apt-get install ros-${ROS_DISTRO}-urdf-tutorial
+# Can be .xacro or .urdf file
 $ ros2 launch urdf_tutorial display.launch.py model:=/home/ubuntu/ros2_ws/src/mycobot_ros2/mycobot_description/urdf/mycobot_280_urdf.xacro
+$ ros2 launch urdf_tutorial display.launch.py model:=/home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/urdf/mycobot_320_m5_2022.urdf
+```
+- Check coordinate frames (.pdf will be created)
+```bash
+$ ros2 run tf2_tools view_frame
+# gnome document viewer
+$ evince frames_2024-10-13_11.01.53.pdf 
 ```
 
 
+
 ## Mycobot 320 URDF file create
+<detail closed>
+  <summary>
+    Practice - problem with generating - not important will use URDF
+  </summary>
+
 ```bash
 # URDF files package
 $ ros2 pkg create --build-type ament_python --license Apache-2.0 --description &quot;mycobot ros2 URDF files, mesh files&quot; mycobot_ros2_description
@@ -109,5 +122,8 @@ hook  package.bash  package.dsv  package.ps1  package.sh  package.xml  package.z
 ```
 
 - `chown -x *.dae && chown a+x *.dae`
+
+</details>
+
 
 Unofficial https://github.com/Tiryoh/mycobot_ros/tree/main
