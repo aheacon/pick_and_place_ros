@@ -87,7 +87,125 @@ Solution: Remove `build` directory  and start `colcon build`
 
 
 ### Simulate robotic arm in Gazebo and Ros2
-https://automaticaddison.com/how-to-simulate-a-robotic-arm-in-gazebo-ros-2/
+[based on this](https://automaticaddison.com/how-to-simulate-a-robotic-arm-in-gazebo-ros-2/)
+- There are 2 ways
+1. classic way - `gazebo`
+2. new way (ignition) - `ros_gz`
+
+#### DAE
+DAE (Digital Asset Exchange) files, also known as COLLADA (COLLAborative Design Activity) files, can be created by various 3D modeling and animation software
+The DAE format is widely used in game development, virtual reality, augmented reality, and simulation environments because it’s an open standard that can store 3D assets along with their associated metadata.
+AWS RoboMaker
+
+#### Gazebo ignition
+- Worlds
+  - in `worlds` folder
+  - simulated world using the Simulation Description Format (SDF) 
+  - Plugins used:
+    - Physics - how objects interact and move in the world.
+    - UserCommands -  to control things in the simulation
+    - SceneBroadcaster - updates about what’s happening in the world.
+  - `Models` are inserted from outside sources
+    - `Sun`
+- Models
+  - allows the simulation to efficiently handle both the physical interactions and visual representation 
+  - type `static` - not moving
+  - each model is folder in `models` folder
+  - is defined using the Simulation Description Format (SDF)
+  - Each model contains of `links` that has components
+    - `inertial` - how object behaves in physics
+    - `collission` - shape used for collission detection - mesh file `.dae` in `models/<model>/meshes` directory
+    - `visual geometry` - how model looks in the simulation - separate mesh file `.dae`
+    - `model.sdf` and `model.config` files are typically created manually using a basic text editor.
+- URDF settings
+  - in `urdf` folder
+- List of [Gazebo plugins](https://gazebosim.org/api/sim/8/namespacegz_1_1sim_1_1systems.html)
+  - The JointStatePublisher publishes the state of all joints in a robot to the “/joint_states” topic, including positions (radians or meters), velocities (radians per second or meters per second), and efforts (Nm or N) as a sensor_msgs/JointState message.
+  - The JointPositionController subscribes to target joint angles (i.e. positions) as a std_msgs/Float64 message (i.e. a floating-point number like 0.36).
+
+- [ros2 controllers](https://control.ros.org/rolling/doc/ros2_controllers/doc/controllers_index.html)
+
+- **Flow**
+ - Based on [image](https://automaticaddison.com/how-to-simulate-a-robotic-arm-in-gazebo-ros-2/) `ros_2 control` package has
+ 1. Controller Manager -> speaks with app and resource manager (`ros2_control` package)
+   - `arm_controller` - picks/subscribes to `velocity` and `position` from Simulation/Arm HW interface
+   - `status_broadcaster` - Get status from Simulation/Arm HW interface adn report/publish to `joint_states` topic
+   - `tool_controller` - gets position from gripper
+ 2. Resource Manager - speaks with controller manager and simulation/real system
+   - Simulation HW interface - Gazebo
+   - Arm HW interface -  real world
+   - Tool HW interface
+   - ros2`arm_controller`
+
+- Setting up the parameter file to enable ros to speak with gazebo [see this](https://gazebosim.org/docs/fortress/ros2_interop/) and [integration](https://gazebosim.org/docs/fortress/ros2_integration/)
+
+<details closed>
+  <summary>
+   Ros 2 integration
+  </summary>
+
+```bash
+$ ros2 run ros_gz_bridge parameter_bridge /TOPIC@ROS_MSG@IGN_MSG
+```
+- Means `ros2 run ros_gz_bridge parameter_bridge` - runs `parameter_bridge` code from the `ros_gz_bridge` package
+- `/TOPIC` - Ignition internal topic, over which the messages will be sent.
+- 1. `@` - ROS_msg type
+- 2. Here can be `@` (bidirectional), `[` (from ignition to ros) or `]` (from ros to ignition) - ign_msg type
+- ALternatively there is `ros_ign_bridge` launch file to specify yaml format
+
+- Example of ros integration
+```bash
+# Bridge where Key publisher plugin sends messages
+$ ros2 run ros_gz_bridge parameter_bridge /keyboard/keypress@std_msgs/msg/Int32@ignition.msgs.Int32
+# Add top right conernr `key publisher` plugin
+$ ign gazebo empty.sdf
+# Listener (after pressing keyboard in gazebo)
+$ ros2 topic echo /keyboard/keypress
+data: 83
+---
+```
+</details>
+
+
+
+<details closed>
+  <summary>
+   Ros 2 interoperability
+  </summary>
+
+- Based on [this](https://gazebosim.org/docs/fortress/ros2_interop/)
+- Example `rrobt` arm.
+</details>
+
+
+<details closed>
+  <summary>
+    Getting started with Gazebo ignition
+  </summary>
+
+- Example of starting gazebo
+
+```bash
+$ sudo apt-get install ros-${ROS_DISTRO}-ros-gz
+# if for some reason it doesn't start kill process
+$ kill -9 `pgrep -x 'ruby'`
+$ ign gazebo empty.sdf
+# For some reasaon this sometimes doesn't work
+$ ros2 launch ros_gz_sim gz_sim.launch.py gz_args:="shapes.sdf"
+# This works
+$ ros2 launch ros_gz_sim gz_sim.launch.py
+# There is an error
+[ruby $(which ign) gazebo-1] Xlib:  extension "NV-GLX" missing on display ":1".
+[ruby $(which ign) gazebo-1] [Err] [SystemPaths.cc:473] Could not resolve file [texture.png]
+```
+![alt text](opening_ros_gz.png)
+![alt text](panda_manipulator_image.png)
+</details>
+
+
+
+### Control robotic arm using ros2 control and gazebo
+https://automaticaddison.com/how-to-control-a-robotic-arm-using-ros-2-control-and-gazebo/
 
 ### Control robotic arm using ros2 control and gazebo
 https://automaticaddison.com/how-to-control-a-robotic-arm-using-ros-2-control-and-gazebo/
