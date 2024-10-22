@@ -32,7 +32,7 @@ A plugin is a chunk of code that is compiled as a shared library and inserted in
 
 [Tutorial 2](https://www.theconstruct.ai/category/gazebo-tutorials/)
 
-- Download the model
+## Download the model
 ```bash
 $ ls -la
 total 76
@@ -45,6 +45,8 @@ drwxrwxr-x  2 anel anel  4096 Sep 27  2023 meshes    # important
 -rw-rw-r--  1 anel anel  1430 Sep 27  2023 model.sdf # important
 $ export GZ_SIM_RESOURCE_PATH=/home/anel/GitHub/pick_and_place_ros/my_models
 ```
+- Models to download http://models.gazebosim.org/
+  - `sun`, etc.
 
 ## Build the robot
 [Based on this](https://gazebosim.org/docs/latest/building_robot/)
@@ -214,6 +216,7 @@ $  gz service -is /world/empty/create
 # Spawn (https://gazebosim.org/libs/sdformat/ library will convert URDF->SDF XML)
 $ gz service -s /world/empty/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req 'sdf_filename: "/home/anel/GitHub/pick_and_place_ros/gazebo/urdf_mycobot/mycobot_320_pi_2022.urdf", name: "mycobot_320_pi"'
 ```
+- Note [unofficial mycobot](https://github.com/Tiryoh/mycobot_ros/blob/main/mycobot_gazebo/launch/mycobot_with_emptyworld.launch) and [automaticaddision](https://github.com/automaticaddison/mycobot_ros2/blob/main/mycobot_gazebo/urdf/mycobot_280_gazebo.urdf.xacro) are using `xacro` files. TODO in new folder this
 ## Questions
 1. Cannot move `caster` around build_robot.sdf?
 2. Installing and using Gazebo Transport?
