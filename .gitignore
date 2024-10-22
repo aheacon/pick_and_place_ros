@@ -57,3 +57,4 @@ CATKIN_IGNORE
 ros2_ws_webots
 ros2_ws
 webot_ws
+.vscode/

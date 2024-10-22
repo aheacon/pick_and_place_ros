@@ -8,7 +8,7 @@
 Ionic (9.x.x), Harmonic (8.x.x), Garden (7.x.x), and Fortress (6.x.x) 
 ```bash
 $ gz sim shapes.sdf # empty.sdf
-$ gz sim --version
+$ gz sim --version # --versions also work
 Gazebo Sim, version 8.6.0
 # One can have multiple versions
 $ gz sim --force-version 9.0.0 shapes.sdf
@@ -107,7 +107,53 @@ $ gz topic -e -t /world/world_demo/stats
 
 ```
 
-## Questionw
+## Sensors
+- [GitHub examples](https://github.com/gazebosim/gz-sim/tree/gz-sim8/examples/worlds)
+- [Library of gz-sensors](https://github.com/gazebosim/gz-sensors)
+- [ROS launches](https://github.com/gazebosim/ros_gz/tree/ros2/ros_gz_sim_demos/launch)
+- The inertial measurement unit (IMU) sensor
+```bash
+# Get positions and orientations
+$ gz topic -e -t /imu
+# Topic to check if wall is touched
+$ gz topic -e  -t /wall/touched
+# Lidar
+$ gz topic -e -t /lidar
+```
+- [Publish/subscribe in Gazebo](https://gazebosim.org/api/transport/14/messages.html)
+  - Prerequisits is to [install Gazebo Transport](https://gazebosim.org/api/transport/14/installation.html)
+  ```bash
+  $ sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+  # This is depracated cannot install the package
+  $ wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+  # List  keys
+  $ sudo apt-key list
+  pub   rsa2048 2015-04-01 [SC]
+        D248 6D2D D83D B692 72AF  E988 6717 0598 AF24 9743
+  uid           [ unknown] OSRF Repository (OSRF Repository GPG key) <osrfbuild@osrfoundation.org>
+
+  # Export key
+  $ sudo apt-key export AF249743 | sudo gpg --dearmor -o /usr/share/keyrings/gazebo.gpg
+  # Update source
+  $ cat /etc/apt/sources.list.d/gazebo-stable.list 
+  deb [arch=amd64 signed-by=/usr/share/keyrings/gazebo.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable jammy main
+  # Install doesn't work
+  $ sudo apt-get install libgz-transport8-dev
+  # sudo apt-get install libgazebo11-dev
+  # sudo apt install libignition-transport8-log-dev
+  ```
+
+```bash
+# Publish/subscribe node
+$ mkdir build
+$ cd build && cmake .. && make lidar_node && ./build/lidar_node
+```
+- Launch
+```bash
+$ gz launch sensor_launch.gzlaunch
+```
+
+## Questions
 - Cannot move `caster` around build_robot
 - Where it comes from `/model/vehicle_blude/odometry` ? From plugins
   - This is without pluging (just `build_robot.sf`)
