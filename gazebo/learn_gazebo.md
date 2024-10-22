@@ -70,8 +70,6 @@ Joint types:
 
 
 ## 2. Move robot
-
-
 ### 2.1 Move with plugin diff_drive
 - `diff_drive` plugin
 
@@ -97,6 +95,49 @@ $ gz sim building_robot.sdf
   - See [gz-sim/tutorials/triggered_publisher.md](https://github.com/gazebosim/gz-sim/blob/gz-sim9/tutorials/triggered_publisher.md)
 - There is no stop keystroke
 
+- Where it comes from `/model/vehicle_blude/odometry` ? From plugins
+  - This is without pluging (just `build_robot.sf`)
+```bash
+$ gz topic -l
+/clock
+/gazebo/resource_paths
+/gui/camera/pose
+/gui/currently_tracked
+/gui/track
+/stats
+/world/car_world/clock
+/world/car_world/dynamic_pose/info
+/world/car_world/pose/info
+/world/car_world/scene/deletion
+/world/car_world/scene/info
+/world/car_world/state
+/world/car_world/stats
+/world/car_world/light_config
+/world/car_world/material_color
+```
+  - This is with pluging (just `moving_robot.sf`)
+```bash
+$ gz topic -l
+/clock
+/gazebo/resource_paths
+/gui/camera/pose
+/gui/currently_tracked
+/gui/track
+/model/vehicle_blue/odometry
+/model/vehicle_blue/tf
+/stats
+/world/car_world/clock
+/world/car_world/dynamic_pose/info
+/world/car_world/pose/info
+/world/car_world/scene/deletion
+/world/car_world/scene/info
+/world/car_world/state
+/world/car_world/stats
+/cmd_vel
+/model/vehicle_blue/enable
+/world/car_world/light_config
+/world/car_world/material_color
+```
 
 ## SDF worlds
 [Based on this](https://gazebosim.org/docs/latest/sdf_worlds/)
@@ -153,48 +194,14 @@ $ cd build && cmake .. && make lidar_node && ./build/lidar_node
 $ gz launch sensor_launch.gzlaunch
 ```
 
+## Actors
+- Animated model - actor
+- Trajectories animation - actors lnks around the world as one group
+  - Scripted in SDF, [see](http://sdformat.org/spec?ver=1.8&amp;elem=actor)
+- Skeleton animatino - motion between links
+  - Imported from COLLADA (.dae) and Biovision Hierarchy(BVH)(.bvh) files
+- Combined
+
 ## Questions
-- Cannot move `caster` around build_robot
-- Where it comes from `/model/vehicle_blude/odometry` ? From plugins
-  - This is without pluging (just `build_robot.sf`)
-```bash
-$ gz topic -l
-/clock
-/gazebo/resource_paths
-/gui/camera/pose
-/gui/currently_tracked
-/gui/track
-/stats
-/world/car_world/clock
-/world/car_world/dynamic_pose/info
-/world/car_world/pose/info
-/world/car_world/scene/deletion
-/world/car_world/scene/info
-/world/car_world/state
-/world/car_world/stats
-/world/car_world/light_config
-/world/car_world/material_color
-```
-  - This is with pluging (just `moving_robot.sf`)
-```bash
-$ gz topic -l
-/clock
-/gazebo/resource_paths
-/gui/camera/pose
-/gui/currently_tracked
-/gui/track
-/model/vehicle_blue/odometry
-/model/vehicle_blue/tf
-/stats
-/world/car_world/clock
-/world/car_world/dynamic_pose/info
-/world/car_world/pose/info
-/world/car_world/scene/deletion
-/world/car_world/scene/info
-/world/car_world/state
-/world/car_world/stats
-/cmd_vel
-/model/vehicle_blue/enable
-/world/car_world/light_config
-/world/car_world/material_color
-```
+1. Cannot move `caster` around build_robot.sdf?
+2. Installing and using Gazebo Transport?
