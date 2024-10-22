@@ -89,8 +89,8 @@ Solution: Remove `build` directory  and start `colcon build`
 ### Simulate robotic arm in Gazebo and Ros2
 [based on this](https://automaticaddison.com/how-to-simulate-a-robotic-arm-in-gazebo-ros-2/)
 - There are 2 ways
-1. classic way - `gazebo`
-2. new way (ignition) - `ros_gz`
+1. classic way - `gazebo` https://classic.gazebosim.org/
+2. new way (ignition) - `ros_gz` https://gazebosim.org/docs/latest/tutorials/
 
 #### DAE
 DAE (Digital Asset Exchange) files, also known as COLLADA (COLLAborative Design Activity) files, can be created by various 3D modeling and animation software
@@ -158,7 +158,7 @@ $ ros2 run ros_gz_bridge parameter_bridge /TOPIC@ROS_MSG@IGN_MSG
 # Bridge where Key publisher plugin sends messages
 $ ros2 run ros_gz_bridge parameter_bridge /keyboard/keypress@std_msgs/msg/Int32@ignition.msgs.Int32
 # Add top right conernr `key publisher` plugin
-$ ign gazebo empty.sdf
+$ gz sim # or ign gazebo empty.sdf
 # Listener (after pressing keyboard in gazebo)
 $ ros2 topic echo /keyboard/keypress
 data: 83
