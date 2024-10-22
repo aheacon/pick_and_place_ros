@@ -202,6 +202,30 @@ $ gz launch sensor_launch.gzlaunch
   - Imported from COLLADA (.dae) and Biovision Hierarchy(BVH)(.bvh) files
 - Combined
 
+## Spawing the services
+- While `SDF` can describe a world with multiple robot models, `URDF` can only describe one robot model.
+- If you have a `xacro` representation of a robot model, you can turn the `xacro` file into a `URDF` file
+  using the `xacro` package: [see this tutorial](https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html) for more information
+- [gazebo demo package](https://github.com/ros-simulation/gazebo_ros_demos) has `rrbot.urdf`
+- Use `/world/empty/create` service from `gz sim empty.sdf && gz service -l`
+```bash
+# Informaton about service
+$  gz service -is /world/empty/create
+# Spawn (https://gazebosim.org/libs/sdformat/ library will convert URDF->SDF XML)
+$ gz service -s /world/empty/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req 'sdf_filename: "/home/anel/GitHub/pick_and_place_ros/gazebo/urdf_mycobot/mycobot_320_pi_2022.urdf", name: "mycobot_320_pi"'
+```
 ## Questions
 1. Cannot move `caster` around build_robot.sdf?
 2. Installing and using Gazebo Transport?
+3. Loading `mycobot` via `gz service` not working
+```bash
+Warning [parser_urdf.cc:2774] Error Code 19: Msg: urdf2sdf: link[base] has no <inertial> block defined. Please ensure this link has a valid mass to prevent any missing links or joints in the resulting SDF model.
+Error Code 19: Msg: urdf2sdf: [1] child joints ignored.
+Error Code 19: Msg: urdf2sdf: [1] child links ignored.
+Warning [parser_urdf.cc:2777] Error Code 19: Msg: urdf2sdf: link[base] is not modeled in sdf.[Err] [UserCommands.cc:1145] Error Code 17: Msg: A model must have at least one link.
+[Err] [UserCommands.cc:1145] Error Code 17: Msg: A model must have at least one link.
+[Err] [UserCommands.cc:1145] Error Code 25: Msg: FrameAttachedToGraph error: scope context name[] does not match __model__ or world.
+```
+4. How to download gazebo packages?
+
+
