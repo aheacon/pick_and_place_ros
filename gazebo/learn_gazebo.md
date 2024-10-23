@@ -3,6 +3,30 @@
 1. classic way - `gazebo` https://classic.gazebosim.org/
 2. new way (ignition) - `ros_gz` https://gazebosim.org/docs/latest/tutorials/
 
+# ROS and Gazebo installation
+[Based on ROS2 integration overview](https://gazebosim.org/docs/all/ros2_overview/) and [ROS & Gazebo installation](https://gazebosim.org/docs/all/ros_installation/)
+
+[ros_gz package](https://github.com/gazebosim/ros_gz)
+
+Gazebo versions:
+[Gazebo Harmonic](https://gazebosim.org/docs/harmonic/install/) is the 8th major release of Gazebo. It is a long-term release.
+
+Each version of ROS works best with a specific version of each Tier 1 platform.
+Tier 1 platforms are platforms / host operating systems that are used in the development of ROS and Gazebo.
+Best is to use the latest LTS version of ROS and the Tier 1 platform / operating system recommend for that version of ROS.
+ROS 2 Humble (or Iron) LTS(22.04) - my case
+    - works the best with GZ Fortress(LTS) - not my case
+    - with GZ Harmonic (LTS) has some problems - my case
+      - [Caution](https://gazebosim.org/docs/all/ros_installation/#gazebo-harmonic-with-ros-2-humble-iron-or-rolling-use-with-caution)
+      - Packages `ros-humble-ros-gz*` conflict with non ROS official binary packages hosted in packages.osrfoundation.org `ros-humble-ros-gzharmonic`
+      - It is recommended to install that
+      ```bash
+      $ sudo apt-get install ros-humble-ros-gzharmonic
+      ```
+    - not possible with Gz Ionic.
+ROS 2 Jazzy (LTS)(24.04) works  only with GZ Harmonic (LTS) 
+ROS 2 Rolling(latest ROS) works only with Gz Ionic
+
 ## Gazebo ignition
 - Versions:
 Ionic (9.x.x), Harmonic (8.x.x), Garden (7.x.x), and Fortress (6.x.x) 
