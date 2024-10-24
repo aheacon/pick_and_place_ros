@@ -255,6 +255,40 @@ Warning [parser_urdf.cc:2777] Error Code 19: Msg: urdf2sdf: link[base] is not mo
 [Err] [UserCommands.cc:1145] Error Code 25: Msg: FrameAttachedToGraph error: scope context name[] does not match __model__ or world.
 ```
 
+## Convert URDF to SDF
+```bash
+$ gz sdf -p urdf/mycobot_320_m5_2022_gazebo.urdf > urdf/mycobot_320_m5_2022_gazebo.sdf
+Error [parser_urdf.cc:3348] Unable to call parseURDF on robot model
+Error Code 40: Msg: Failed to parse the URDF file after converting to SDFormat.
+Error: SDF parsing the xml failed.
+```
+
+## Try again
+```bash
+$  gz sim empty.sdf
+$ gz service -s /world/empty/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req 'sdf_filename: "/home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_gazebo/urdf/mycobot_320_m5_2022_gazebo.urdf", name: "mycobot_320_pi"'
+# Service call timed out -  if empty.sdf is not started
+[Err] [UserCommands.cc:1145] Error Code 40: Msg: Failed to parse the URDF file after converting to SDFormat.
+[Err] [UserCommands.cc:1145] Error Code 1: Msg: Unable to read file: [/home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_gazebo/urdf/mycobot_320_m5_2022_gazebo.urdf]
+
+$ gz service -s /world/empty/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 10000 --req 'sdf_filename: "/home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_gazebo/mycobot_320_gazebo.xarco", name: "mycobot_320_pi"'
+Service call timed out
+
+# CHECK URDF
+$  check_urdf /home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_gazebo/urdf/mycobot_320_m5_2022_gazebo.urdf
+Error:   Unable to parse component [${pi/2}] to a double (while parsing a vector value)
+         at line 114 in ./urdf_parser/src/pose.cpp
+Error:   Could not parse visual element for Link [base_link]
+         at line 453 in ./urdf_parser/src/link.cpp
+Error:   effort value (${effort}) is not a valid float
+         at line 144 in ./urdf_parser/src/joint.cpp
+Error:   Could not parse limit element for joint [joint2_to_joint1]
+         at line 454 in ./urdf_parser/src/joint.cpp
+Error:   joint xml is not initialized correctly
+         at line 233 in ./urdf_parser/src/model.cpp
+ERROR: Model Parsing the xml failed
+
+```
 ## Questions:
 4. How to download gazebo packages?
 
