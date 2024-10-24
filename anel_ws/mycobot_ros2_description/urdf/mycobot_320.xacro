@@ -42,7 +42,7 @@
 		</inertial>
 		<visual>
 			<geometry>
-				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/base.dae"/>
+				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/base.dae"/>
 			</geometry>
 			<origin xyz = "0.0 0 -0.03" rpy = "0 0 ${pi/2}"/>
 		</visual>
@@ -77,7 +77,7 @@
 			<!--Define the shape of the link-->
 			<geometry>
 				<!--Specify the link's visual appearance using the 3D mesh file.-->
-				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/link1.dae"/>
+				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/link1.dae"/>
 			</geometry>
 			<!--Define the position and orientation of the visual representation relative to the 
 			link's reference frame. Here, it's rotated by -1.5708 radians (or -90 degrees) 
@@ -106,7 +106,7 @@
 		</inertial>
 		<visual>
 			<geometry>
-				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/link2.dae"/>
+				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/link2.dae"/>
 			</geometry>
 			<origin xyz = "0.0 0 -0.06096" rpy = " 0 0 ${-pi/2}"/>
 		</visual>
@@ -129,7 +129,7 @@
 		</inertial>
 		<visual>
 		  	<geometry>
-		   		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/link3.dae"/>
+		   		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/link3.dae"/>
 		  	</geometry>
 			<origin xyz = "0.0 0 0.03256 " rpy = " 0 ${-pi/2} 0"/>
 		</visual>
@@ -152,7 +152,7 @@
 		</inertial>
 		<visual>
 			<geometry>
-				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/link4.dae"/>
+				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/link4.dae"/>
 			</geometry>
 			<origin xyz = "0.0 0 0.03056 " rpy = " 0 ${-pi/2} 0"/>
 		</visual>
@@ -175,7 +175,7 @@
 		</inertial>
 		<visual>
 		  	<geometry>
-				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/link5.dae"/>
+				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/link5.dae"/>
 		  	</geometry>
 		  	<origin xyz = "0.0 0 -0.03356 " rpy = "${-pi/2} 0 0"/>
 		</visual>
@@ -198,7 +198,7 @@
 		</inertial>
 		<visual>
 		  	<geometry>
-				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/link6.dae"/>
+				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/link6.dae"/>
 		  	</geometry>
 		  	<origin xyz = "0 0.00 -0.038" rpy = "0 0 0"/>
 		</visual>
@@ -210,7 +210,7 @@
 		</collision>
 	</link>
 
-	<link name="link6_flange">
+	<!-- <link name="link6_flange">
 		<inertial>
 			<origin xyz="0 0 0.0" rpy="0 0 0"/>
 		  	<mass value="0.035"/>
@@ -221,7 +221,7 @@
 		</inertial>
 		<visual>
 		  	<geometry>
-				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/link7.dae"/>
+				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/link7.dae"/>
 		  	</geometry>
 		  	<origin xyz = "0.0 0 -0.012 " rpy = "0 0 0"/>
 		</visual>
@@ -231,9 +231,9 @@
 		  	</geometry>
 		  	<origin xyz = "0 0.00 0.0" rpy = "0 0 0"/>
 		</collision>
-	</link>
+	</link> -->
 
-	<link name="gripper_base">
+	<!-- <link name="gripper_base">
 		<inertial>
 			<origin xyz="0 0 0.0" rpy="0 0 0"/>
 		  	<mass value="0.07"/>
@@ -244,7 +244,7 @@
 		</inertial>
 		<visual>
 		  	<geometry>
-				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/gripper_base.dae"/>
+				<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/gripper_base.dae"/>
 		  	</geometry>
 		  	<origin xyz = "0.0 0.0 -0.012" rpy = "0 0 0"/>
 		</visual>
@@ -267,7 +267,7 @@
 		</inertial>
 		<visual>
 		  	<geometry>
-		  		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/gripper_left1.dae"/>
+		  		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/gripper_left1.dae"/>
 		  	</geometry>
 			<origin xyz = "0.039 -0.0133 -0.012 " rpy = " 0 0 0"/>
 		</visual>
@@ -290,7 +290,7 @@
 		</inertial>
 		<visual>
 		  	<geometry>
-		   		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/gripper_left2.dae"/>
+		   		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/gripper_left2.dae"/>
 		  	</geometry>
 			<origin xyz = "0.005 -0.0195 -0.012 " rpy = " 0 0 0"/>
 		</visual>
@@ -314,7 +314,7 @@
 		</inertial>
 		<visual>
 			<geometry>
-		   		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/gripper_right1.dae"/>
+		   		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/gripper_right1.dae"/>
 		  	</geometry>
 			<origin xyz = "-0.039 -0.0133 -0.012 " rpy = " 0 0 0"/>
 		</visual>
@@ -337,7 +337,7 @@
 		</inertial>
 		<visual>
 			<geometry>
-		   		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/gripper_right2.dae"/>
+		   		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/gripper_right2.dae"/>
 		 	</geometry>
 			<origin xyz = "-0.005 -0.0195 -0.012 " rpy = " 0 0 0"/>
 		</visual>
@@ -360,7 +360,7 @@
 		</inertial>
 		<visual>
 			<geometry>
-		   		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/meshes/mycobot_320/gripper_right3.dae"/>
+		   		<mesh filename="file:///home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/mesh/mycobot_320/gripper_right3.dae"/>
 			</geometry>
 			<origin xyz = "-0.012 0.0025 -0.012 " rpy = " 0 0 0"/>
 		</visual>
@@ -371,7 +371,7 @@
 			<origin xyz = "0.014 0.005 0.005 " rpy = " 0 0 0"/>
 		</collision>
 	</link>
-  
+   -->
 	<!-- ********** JOINTS ********** -->
 	
 	<!-- Attach the robot base to the world frame with no initial offset or rotation. -->
@@ -447,7 +447,7 @@
 		<origin xyz= "0 -0.07318 0" rpy = "${pi/2} ${-pi/2} 0"/>
 	</joint>
 
-	<joint name="link6_to_link6flange" type="revolute">
+	<!-- <joint name="link6_to_link6flange" type="revolute">
 		<axis xyz=" 0 0 1"/>
 		<limit effort = "${effort}" lower = "-3.05" upper = "3.05" velocity = "${velocity}"/>
 		<parent link="link6"/>
@@ -467,12 +467,12 @@
 		<parent link="gripper_base"/>
 		<child link="gripper_left3"/>
 		<origin xyz= "-0.012 0.005 0" rpy = "0 0 0"/> 
-	</joint>
+	</joint> -->
 	
 	<!-- The mimic element means this joint will follow the movements of the 
 		gripper_controller joint. 
 	-->
-	<joint name="gripper_base_to_gripper_left2" type="revolute">
+	<!-- <joint name="gripper_base_to_gripper_left2" type="revolute">
 		<axis xyz="0 0 1"/>
 		<limit effort = "${effort}" lower = "-0.8" upper = "0.5" velocity = "${velocity}"/>
 		<parent link="gripper_base"/>
@@ -515,6 +515,6 @@
 		<child link="gripper_right1"/>
 		<origin xyz= "0.027 0.016 0" rpy = "0 0 0"/> 
 		<mimic joint="gripper_controller" multiplier="1.0" offset="0" />
-	</joint>
+	</joint> -->
   
 </robot>

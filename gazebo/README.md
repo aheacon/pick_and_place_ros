@@ -288,6 +288,78 @@ Error:   joint xml is not initialized correctly
          at line 233 in ./urdf_parser/src/model.cpp
 ERROR: Model Parsing the xml failed
 
+$ check_urdf <(xacro ./mycobot_gazebo/mycobot_320_gazebo.xacro)
+robot name is: mycobot_280
+---------- Successfully Parsed XML ---------------
+root Link: world has 1 child(ren)
+    child(1):  base_link
+        child(1):  link1
+            child(1):  link2
+                child(1):  link3
+                    child(1):  link4
+                        child(1):  link5
+                            child(1):  link6
+                                child(1):  link6_flange
+                                    child(1):  gripper_base
+                                        child(1):  gripper_left2
+                                        child(2):  gripper_right2
+                                        child(3):  gripper_right3
+                                            child(1):  gripper_right1
+                                        child(4):  gripper_left3
+                                            child(1):  gripper_left1
+
+$ pwd
+/home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/urdf
+
+$ check_urdf mycobot_320_m5_2022.urdf 
+robot name is: firefighter
+---------- Successfully Parsed XML ---------------
+root Link: base_link has 1 child(ren)
+    child(1):  link1
+        child(1):  link2
+            child(1):  link3
+                child(1):  link4
+                    child(1):  link5
+                        child(1):  link6
+
+# Zaista ovaj URDF nema intertial property, ali ima .xacro
+$ gz sim empty.sdf
+Warning [parser_urdf.cc:2774] Error Code 19: Msg: urdf2sdf: link[base_link] has no <inertial> block defined. Please ensure this link has a valid mass to prevent any missing links or joints in the resulting SDF model.
+Error Code 19: Msg: urdf2sdf: [1] child joints ignored.
+Error Code 19: Msg: urdf2sdf: [1] child links ignored.
+Warning [parser_urdf.cc:2777] Error Code 19: Msg: urdf2sdf: link[base_link] is not modeled in sdf.[Err] [UserCommands.cc:1145] Error Code 17: Msg: A model must have at least one link.
+[Err] [UserCommands.cc:1145] Error Code 17: Msg: A model must have at least one link.
+[Err] [UserCommands.cc:1145] Error Code 25: Msg: FrameAttachedToGraph error: scope context name[] does not match __model__ or world.
+
+$ gz service -s /world/empty/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req 'sdf_filename: "/home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_ros2_description/urdf/mycobot_320_m5_2022.urdf", name: "mycobot_320_pi"'
+data: true
+
+
+#  Opet sa XACRO fielom gzim ne radi
+$ check_urdf <(xacro ./mycobot_320_gazebo.xacro) # radu
+$ gz sim empty.sdf
+ror [parser_urdf.cc:3348] Unable to call parseURDF on robot model
+[Err] [UserCommands.cc:1145] Error Code 40: Msg: Failed to parse the URDF file after converting to SDFormat.
+[Err] [UserCommands.cc:1145] Error Code 1: Msg: Unable to read file: [/home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_gazebo/mycobot_320_gazebo.xacro]
+$ gz service -s /world/empty/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req 'sdf_filename: "/home/anel/GitHub/pick_and_place_ros/anel_ws/mycobot_gazebo/mycobot_320_gazebo.xacro", name: "mycobot_320_pi"'
+
+# Konvertuj xacro u URDF
+$ xacro ./mycobot_320_gazebo.xacro > anel_robot.urdf
+$ check_urdf anel_robot.urdf
+$ colon build && source install/setup.bash
+$ gz sdf -p anel_robot.urdf > anel_robot.sdf
+$ gz sim anel_robot.sdf
+# Meshes doesn't exist
+[Err] [Server.cc:204] Error Code 14: Msg: Parser configurations requested resolved uris, but uri 
+[file:///home/anel/GitHub/pick_and_place_ros/anel_ws/install/mycobot_ros2_description/share/mycobot_ros2_description/meshes/mycobot_280/base_link.dae] could not be resolved.
+      ///home/anel/GitHub/pick_and_place_ros/anel_ws/install/mycobot_ros2_description/share/mycobot_ros2_description/mesh/mycobot_280/base_link.dae]
+      ///home/anel/GitHub/pick_and_place_ros/anel_ws/install/mycobot_ros2_description/share/mycobot_ros2_description/mesh/base_link.dae]
+gz sim anel_robot.sdf
+$ ls /home/anel/GitHub/pick_and_place_ros/anel_ws/install/mycobot_ros2_description/share/mycobot_ros2_description/
+hook  launch  mesh  package.bash  package.dsv  package.ps1  package.sh  package.xml  package.zsh  rviz  urdf
+$ ls /home/anel/GitHub/pick_and_place_ros/anel_ws/install/mycobot_ros2_description/share/mycobot_ros2_description/mesh/
+base.dae  link1.dae  link2.dae  link3.dae  link4.dae  link5.dae  link6.dae
+
 ```
 ## Questions:
 4. How to download gazebo packages?
