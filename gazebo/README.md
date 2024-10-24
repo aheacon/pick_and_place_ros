@@ -231,7 +231,8 @@ $ gz launch sensor_launch.gzlaunch
 ## Spawing the services
 - While `SDF` can describe a world with multiple robot models, `URDF` can only describe one robot model.
 - If you have a `xacro` representation of a robot model, you can turn the `xacro` file into a `URDF` file
-  using the `xacro` package: [see this tutorial](https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html) for more information
+  - using the `xacro` package: [see this tutorial](https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html) for more information
+
 - [gazebo demo package](https://github.com/ros-simulation/gazebo_ros_demos) has `rrbot.urdf`
 - Use `/world/empty/create` service from `gz sim empty.sdf && gz service -l`
 ```bash
@@ -253,6 +254,8 @@ Warning [parser_urdf.cc:2777] Error Code 19: Msg: urdf2sdf: link[base] is not mo
 [Err] [UserCommands.cc:1145] Error Code 17: Msg: A model must have at least one link.
 [Err] [UserCommands.cc:1145] Error Code 25: Msg: FrameAttachedToGraph error: scope context name[] does not match __model__ or world.
 ```
+
+## Questions:
 4. How to download gazebo packages?
 
 
