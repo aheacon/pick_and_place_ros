@@ -21,8 +21,22 @@ $ cd ..
 # there is no resdep files (see `Optional and troubleshooting`)
 ```
 <details closed>
-<summary> Check the URDF file - bug 🐛 ❌ fixed 💻 </summary>
+<summary> Check the URDF file </summary>
+- Use `check_urdf` utility to check parsing of XML file of `.urdf` file
+```bash
+$ check_urdf urdf/mycobot_320_pi_2022.urdf 
+robot name is: mycobot_320pi
+---------- Successfully Parsed XML ---------------
+root Link: base has 1 child(ren)
+    child(1):  link1
+        child(1):  link2
+            child(1):  link3
+                child(1):  link4
+                    child(1):  link5
+                        child(1):  link6
 
+```
+- Use `urdf_tutorial` ROS package to start the `.urdf` file - NOT important  - bug 🐛 ❌ fixed 💻
 ```bash
 $ sudo apt-get install ros-${ROS_DISTRO}-urdf-tutorial
 $ ros2 launch urdf_tutorial display.launch.py model:=/home/anel/GitHub/pick_and_place_ros/ros2_ws/src/mycobot_ros2/mycobot_description/urdf/mycobot_320_m5_2022/mycobot_320_m5_2022.urdf
@@ -181,7 +195,6 @@ $ ros2 launch mycobot_320 test.launch.py
 [joint_state_publisher_gui-2] [INFO] [1728139954.884827043] [joint_state_publisher]: Centering
 ```
 </details>
-
 
 
 ### 1.4 Real robot connection 💁

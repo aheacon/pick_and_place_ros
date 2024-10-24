@@ -17,6 +17,17 @@ Tasks that will be done
 6. DRL
 
 
+## Getting started
+### Start robot
+- To start our robot from `my_project` directory
+```bash
+$ cd my_project
+$ rm -rf build/ install/ log/
+$ colcon build
+$ ros2 launch mycobot_description mycobot_320pi.launch.py
+```
+
+## Tutorials
 ## 1. Getting started with ROS2 and myCobot
 
 - Refer to [Getting started with ROS2 and myCobot 320](1_getting_started_with_ros2_and_mycobot320.md) (**done** ✅)
