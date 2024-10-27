@@ -4,7 +4,8 @@
 # System
 - Ubuntu `jammy` 22.04
 - ROS2  (Humble LTS)
-- Gazebo Harmonic (Gazebo 8) (LTS)
+- Gazebo Harmonic (Gazebo 8) (LTS 2026) (design decision to use latest Gazebo)
+- ~~Gazebo Fortress (Gazebo 6 LTS 2026)~~
 - Elephant 320_pi
 
 # Scope 1

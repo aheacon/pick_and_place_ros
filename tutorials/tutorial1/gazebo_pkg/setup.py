@@ -1,8 +1,7 @@
 from setuptools import find_packages, setup
 from glob import glob
-import os
 
-package_name = "mycobot_description"
+package_name = "gazebo_pkg"
 
 setup(
     name=package_name,
@@ -11,13 +10,9 @@ setup(
     data_files=[
         ("share/ament_index/resource_index/packages", ["resource/" + package_name]),
         ("share/" + package_name, ["package.xml"]),
-        ("share/" + package_name + "/xacro", glob("xacro/*")),
+        ("share/" + package_name, ["package.xml"]),
         ("share/" + package_name + "/launch", glob("launch/*")),
-        ("share/" + package_name + "/rviz", glob("rviz/*")),
-        ("share/" + package_name + "/mesh", glob("mesh/*")),
-        ("share/" + package_name + "/worlds", glob("worlds/*")),
-        ("share/" + package_name + "/config", glob("config/*")),
-        # (os.path.join("share", package_name), glob("launch/*.launch.py")),
+        ("share/" + package_name + "/models", glob("models/*")),
     ],
     install_requires=["setuptools"],
     zip_safe=True,

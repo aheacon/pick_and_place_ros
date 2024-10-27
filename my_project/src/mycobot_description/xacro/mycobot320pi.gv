@@ -1,0 +1,26 @@
+digraph G {
+node [shape=box];
+"world" [label="world"];
+"base_link" [label="base_link"];
+"link1" [label="link1"];
+"link2" [label="link2"];
+"link3" [label="link3"];
+"link4" [label="link4"];
+"link5" [label="link5"];
+"link6" [label="link6"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"world" -> "virtual_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"virtual_joint" -> "base_link"
+"base_link" -> "joint2_to_joint1" [label="xyz: 0 0 0.162 \nrpy: 0 -0 0"]
+"joint2_to_joint1" -> "link1"
+"link1" -> "joint3_to_joint2" [label="xyz: 0 0 0 \nrpy: 0 -1.5708 1.5708"]
+"joint3_to_joint2" -> "link2"
+"link2" -> "joint4_to_joint3" [label="xyz: 0.13635 0 0 \nrpy: 0 -0 0"]
+"joint4_to_joint3" -> "link3"
+"link3" -> "joint5_to_joint4" [label="xyz: 0.1205 0 0.082 \nrpy: 0 -0 1.5708"]
+"joint5_to_joint4" -> "link4"
+"link4" -> "joint6_to_joint5" [label="xyz: 0 -0.084 0 \nrpy: 1.5708 -0 0"]
+"joint6_to_joint5" -> "link5"
+"link5" -> "joint6output_to_joint6" [label="xyz: 0 0.06635 0 \nrpy: -1.5708 0 0"]
+"joint6output_to_joint6" -> "link6"
+}

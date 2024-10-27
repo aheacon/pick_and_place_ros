@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mycobot_320pi" >
+
+  <xacro:arg name="gripper" default="none"/>
+  <xacro:arg name="namespace" default=""/>
+
+  <xacro:property name="gr" value="$(arg gripper)"/>
+  
+  <xacro:if value="${gr == 'none'}">
+     <xacro:include filename="$(find mycobot_description)/xacro/macro.mycobot_320_pi_2022.xacro" />
+  </xacro:if>
+
+
+  <xacro:mycobot_320pi namespace="$(arg namespace)"/>
+
+  <!-- World fixed joint-->
+  <link name="world" />
+  <joint name="virtual_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz= "0 0 0" rpy = "0 0 0"/>
+  </joint>
+</robot>

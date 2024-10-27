@@ -1,0 +1,158 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+    <xacro:macro name="config_ctr_gazebo">
+    <!-- I need this for ROS2 control
+         it needs <plugin> - parses the ros2_control tags and loads the appropriate hardware interfaces and controller manager,
+         and <joint> tags including the robot controllers: commands and states.
+         The default behavior provides the following ros2_control interfaces:
+           hardware_interface::JointStateInterface
+           hardware_interface::EffortJointInterface
+           hardware_interface::VelocityJointInterface
+         Custom control SImulatino plugins to implement custom interfaces between Gazebo and ros2_control for simulating more complex mechanisms (nonlinear springs, linkages, etc)
+           Plugins must inherit gz_ros2_control::GazeboSimSystemInterface which implements a simulated ros2_control hardware_interface::SystemInterface,
+           that provides API-level access to read and command joint properties
+         -->
+    <!-- I created this file, it was NOT available in the original mycobot repo -->
+    <!-- but it is here https://github.com/automaticaddison/mycobot_ros2/blob/main/mycobot_gazebo/urdf/ros2_control/gazebo/mycobot_280_ros2_control.xacro -->
+    <ros2_control name="GazeboSimSystem" type="system">
+        <hardware>
+            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+        </hardware>
+
+        <joint name="joint2_to_joint1">
+            <command_interface name="position">
+                <param name="min">-2.879793</param>
+                <param name="max">2.879793</param>
+            </command_interface>
+            <state_interface name="position"/> <!-- <param name="initial_value">1.0</param> -->
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="joint3_to_joint2">
+            <command_interface name="position">
+                <param name="min">-2.879793</param>
+                <param name="max">2.879793</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint4_to_joint3">
+            <command_interface name="position">
+                <param name="min">-2.879793</param>
+                <param name="max">2.879793</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint5_to_joint4">
+            <command_interface name="position">
+                <param name="min">-2.879793</param>
+                <param name="max">2.879793</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint6_to_joint5">
+            <command_interface name="position">
+                <param name="min">-2.879793</param>
+                <param name="max">2.879793</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint6output_to_joint6">
+            <command_interface name="position">
+                <param name="min">-3.05</param>
+                <param name="max">3.05</param>
+            </command_interface>
+            <state_interface name="position"/>
+        </joint>
+
+        <!--  <joint name="gripper_controller">
+            <command_interface name="position">
+                <param name="min">-0.7</param>
+                <param name="max">0.15</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/> 
+        </joint>
+
+        <joint name="gripper_base_to_gripper_left2">
+            <param name="mimic">gripper_controller</param>
+            <param name="multiplier">1.0</param>
+            <command_interface name="position">
+                <param name="min">-0.8</param>
+                <param name="max">0.5</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/> 
+        </joint>
+
+        <joint name="gripper_left3_to_gripper_left1">
+            <param name="mimic">gripper_controller</param>
+            <param name="multiplier">-1.0</param>
+            <command_interface name="position">
+                <param name="min">-0.5</param>
+                <param name="max">0.5</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/> 
+        </joint>
+
+        <joint name="gripper_base_to_gripper_right3">
+            <param name="mimic">gripper_controller</param>
+            <param name="multiplier">-1.0</param>
+            <command_interface name="position">
+                <param name="min">-0.15</param>
+                <param name="max">0.7</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/> 
+        </joint>
+
+        <joint name="gripper_base_to_gripper_right2">
+            <param name="mimic">gripper_controller</param>
+            <param name="multiplier">-1.0</param>
+            <command_interface name="position">
+                <param name="min">-0.5</param>
+                <param name="max">0.8</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/> 
+        </joint>
+
+        <joint name="gripper_right3_to_gripper_right1">
+            <param name="mimic">gripper_controller</param>
+            <param name="multiplier">1.0</param>
+            <command_interface name="position">
+                <param name="min">-0.5</param>
+                <param name="max">0.5</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/> 
+        </joint> -->
+    </ros2_control>
+    <gazebo>
+      <!-- filename="gz_ros2_control-system" -->
+      <!-- <plugin filename="libgz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin"> -->
+      <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+          <!--<robot_sim_type>gazebo_ros2_control/DefaultRobotHWSim</robot_sim_type> -->
+          <parameters>$(find mycobot_description)/config/simple_controller.yaml</parameters> <!-- A YAML file with the configuration of the controllers. This element can be given multiple times to load multiple files. -->
+          <!-- one can specify a namespace and remapping rules, which will be forwarded to the controller_manager and loaded controllers -->
+          <ros>
+              <!-- <namespace>my_namespace</namespace> -->
+              <remapping>/controller_manager/robot_description:=/robot_description</remapping>
+          </ros>
+          <!-- The location of the robot_description (URDF) on the parameter server, defaults to robot_description-->
+          <!-- <robot_param>robot_description</robot_param> -->
+          <!-- Name of the node where the robot_param is located, defaults to robot_state_publisher -->
+          <!-- <robot_param_node>robot_state_publisher</robot_param_node>  -->
+          <!-- Set controller manager name -->
+          <!-- <controller_manager_name>controller_manager</controller_manager_name>  -->
+          <!-- set the controller manager node name -->
+          <!-- <controller_manager_prefix_node_name> </controller_manager_prefix_node_name>  -->
+      </plugin>
+  </gazebo>
+  </xacro:macro>
+</robot>
