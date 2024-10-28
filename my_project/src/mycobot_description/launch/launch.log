@@ -1,0 +1,451 @@
+```bash
+$ ros2 launch  mycobot_description mycobot_320pi_gazebo_controller_modern_way_not_working.launch.py 
+[INFO] [launch]: All log files can be found below /home/anel/.ros/log/2024-10-28-17-01-17-223356-anel-64739
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [ros2_control_node-1]: process started with pid [64743]
+[INFO] [robot_state_publisher-2]: process started with pid [64745]
+[INFO] [create-3]: process started with pid [64747]
+[INFO] [ruby $(which gz) sim-4]: process started with pid [64749]
+[INFO] [spawner-5]: process started with pid [64751]
+[robot_state_publisher-2] [WARN] [1730131277.536397304] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[robot_state_publisher-2] [WARN] [1730131277.536416069] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+[ros2_control_node-1] [WARN] [1730131277.543150210] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[ros2_control_node-1] [WARN] [1730131277.543163775] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+[create-3] [WARN] [1730131277.546844752] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[create-3] [WARN] [1730131277.546863307] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+[ros2_control_node-1] [INFO] [1730131277.566218913] [controller_manager]: Subscribing to '/controller_manager/robot_description' topic for robot description.
+[ros2_control_node-1] [INFO] [1730131277.566318231] [controller_manager]: update rate is 100 Hz
+[ros2_control_node-1] [WARN] [1730131277.566450780] [controller_manager]: No real-time kernel detected on this system. See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+[create-3] [INFO] [1730131277.581743530] [ros_gz_sim]: Requesting list of world names.
+[robot_state_publisher-2] [INFO] [1730131277.601490504] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-2] [INFO] [1730131277.601607445] [robot_state_publisher]: got segment link1
+[robot_state_publisher-2] [INFO] [1730131277.601618455] [robot_state_publisher]: got segment link2
+[robot_state_publisher-2] [INFO] [1730131277.601626020] [robot_state_publisher]: got segment link3
+[robot_state_publisher-2] [INFO] [1730131277.601632452] [robot_state_publisher]: got segment link4
+[robot_state_publisher-2] [INFO] [1730131277.601638613] [robot_state_publisher]: got segment link5
+[robot_state_publisher-2] [INFO] [1730131277.601644945] [robot_state_publisher]: got segment link6
+[robot_state_publisher-2] [INFO] [1730131277.601651387] [robot_state_publisher]: got segment world
+[spawner-5] [WARN] [1730131277.785248852] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[spawner-5] [WARN] [1730131277.785266576] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+[spawner-5] [INFO] [1730131277.863279824] [spawner_arm_controller]: waiting for service /controller_manager/list_controllers to become available...
+[ruby $(which gz) sim-4] [Dbg] [gz.cc:166] Subscribing to [/gazebo/starting_world].
+[ruby $(which gz) sim-4] [Dbg] [gz.cc:168] Waiting for a world to be set from the GUI...
+[ruby $(which gz) sim-4] [Msg] Received world [/home/anel/GitHub/pick_and_place_ros/my_project/install/mycobot_description/share/mycobot_description/worlds/empty.world] from the GUI.
+[ruby $(which gz) sim-4] [Dbg] [gz.cc:172] Unsubscribing from [/gazebo/starting_world].
+[ruby $(which gz) sim-4] [Msg] Gazebo Sim Server v8.6.0
+[ruby $(which gz) sim-4] [Msg] Loading SDF world file[/home/anel/GitHub/pick_and_place_ros/my_project/install/mycobot_description/share/mycobot_description/worlds/empty.world].
+[ruby $(which gz) sim-4] [Msg] Serving entity system service on [/entity/system/add]
+[ruby $(which gz) sim-4] [Dbg] [Physics.cc:870] Loaded [gz::physics::dartsim::Plugin] from library [/usr/lib/x86_64-linux-gnu/gz-physics-7/engine-plugins/libgz-physics-dartsim-plugin.so]
+[ruby $(which gz) sim-4] [Dbg] [SystemManager.cc:77] Loaded system [gz::sim::systems::Physics] for entity [1]
+[ruby $(which gz) sim-4] [Msg] Create service on [/world/default/create]
+[ruby $(which gz) sim-4] [Msg] Remove service on [/world/default/remove]
+[ruby $(which gz) sim-4] [Msg] Pose service on [/world/default/set_pose]
+[ruby $(which gz) sim-4] [Msg] Pose service on [/world/default/set_pose_vector]
+[ruby $(which gz) sim-4] [Msg] Light configuration service on [/world/default/light_config]
+[ruby $(which gz) sim-4] [Msg] Physics service on [/world/default/set_physics]
+[ruby $(which gz) sim-4] [Msg] SphericalCoordinates service on [/world/default/set_spherical_coordinates]
+[ruby $(which gz) sim-4] [Msg] Enable collision service on [/world/default/enable_collision]
+[ruby $(which gz) sim-4] [Msg] Disable collision service on [/world/default/disable_collision]
+[ruby $(which gz) sim-4] [Msg] Material service on [/world/default/visual_config]
+[ruby $(which gz) sim-4] [Msg] Material service on [/world/default/wheel_slip]
+[ruby $(which gz) sim-4] [Dbg] [SystemManager.cc:77] Loaded system [gz::sim::systems::UserCommands] for entity [1]
+[ruby $(which gz) sim-4] [Dbg] [SystemManager.cc:77] Loaded system [gz::sim::systems::SceneBroadcaster] for entity [1]
+[ruby $(which gz) sim-4] [Msg] Loaded level [3]
+[ruby $(which gz) sim-4] [Msg] Serving world controls on [/world/default/control], [/world/default/control/state] and [/world/default/playback/control]
+[ruby $(which gz) sim-4] [Msg] Serving GUI information on [/world/default/gui/info]
+[ruby $(which gz) sim-4] [Msg] World [default] initialized with [default_physics] physics profile.
+[ruby $(which gz) sim-4] [Msg] Serving world SDF generation service on [/world/default/generate_world_sdf]
+[ruby $(which gz) sim-4] [Msg] Serving world names on [/gazebo/worlds]
+[ruby $(which gz) sim-4] [Msg] Resource path add service on [/gazebo/resource_paths/add].
+[ruby $(which gz) sim-4] [Msg] Resource path get service on [/gazebo/resource_paths/get].
+[create-3] [INFO] [1730131278.372265444] [ros_gz_sim]: Requested creation of entity.
+[create-3] [INFO] [1730131278.372323474] [ros_gz_sim]: OK creation of entity.
+[INFO] [create-3]: process has finished cleanly [pid 64747]
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:52:3: QML RenderWindowOverlay: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:67:3: QML EntityContextMenu: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:52:3: QML RenderWindowOverlay: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:67:3: QML EntityContextMenu: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:52:3: QML RenderWindowOverlay: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:67:3: QML EntityContextMenu: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:52:3: QML RenderWindowOverlay: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:67:3: QML EntityContextMenu: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:52:3: QML RenderWindowOverlay: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:67:3: QML EntityContextMenu: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:52:3: QML RenderWindowOverlay: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:67:3: QML EntityContextMenu: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [Msg] Resource path resolve service on [/ga[Msg] Gazebo Sim GUI    v8.6.0
+[ruby $(which gz) sim-4] [Dbg] [Gui.cc:263] Waiting for subscribers to [/gazebo/starting_world]...
+[ruby $(which gz) sim-4] [Dbg] [Application.cc:96] Initializing application.
+[ruby $(which gz) sim-4] [Dbg] [Application.cc:170] Qt using OpenGL graphics interface
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:657] Create main window
+[ruby $(which gz) sim-4] [GUI] [Dbg] [PathManager.cc:68] Requesting resource paths through [/gazebo/resource_paths/get]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Gui.cc:343] GUI requesting list of world names. The server may be busy downloading resources. Please be patient.
+[ruby $(which gz) sim-4] [GUI] [Dbg] [PathManager.cc:57] Received resource paths.
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Gui.cc:401] Requesting GUI from [/world/default/gui/info]...
+[ruby $(which gz) sim-4] [GUI] [Dbg] [GuiRunner.cc:149] Requesting initial state from [/world/default/state]...
+[ruby $(which gz) sim-4] [GUI] [Msg] Loading config [/home/anel/.gz/sim/8/gui.config]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [MinimalScene]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [MinimalScene.cc:802] Creating gz-rendering interface for OpenGL
+[ruby $(which gz) sim-4] [GUI] [Dbg] [MinimalScene.cc:802] Creating gz-rendering interface for OpenGL
+[ruby $(which gz) sim-4] [GUI] [Dbg] [MinimalScene.cc:986] Creating render thread interface for OpenGL
+[ruby $(which gz) sim-4] [GUI] [Dbg] [MinimalScene.cc:802] Creating gz-rendering interface for OpenGL
+[ruby $(which gz) sim-4] [GUI] [Dbg] [MinimalScene.cc:986] Creating render thread interface for OpenGL
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [3D View] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [MinimalScene] from path [/usr/lib/x86_64-linux-gnu/gz-gui-8/plugins/libMinimalScene.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [EntityContextMenuPlugin]
+[ruby $(which gz) sim-4] [GUI] [Msg] Currently tracking topic on [/gui/currently_tracked]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Entity Context Menu] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [EntityContextMenuPlugin] from path [/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins/gui/libEntityContextMenuPlugin.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [GzSceneManager]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Scene Manager] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [GzSceneManager] from path [/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins/gui/libGzSceneManager.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [InteractiveViewControl]
+[ruby $(which gz) sim-4] [GUI] [Msg] Camera view controller topic advertised on [/gui/camera/view_control]
+[ruby $(which gz) sim-4] [GUI] [Msg] Camera reference visual topic advertised on [/gui/camera/view_control/reference_visual]
+[ruby $(which gz) sim-4] [GUI] [Msg] Camera view control sensitivity advertised on [/gui/camera/view_control/sensitivity]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Interactive view control] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [InteractiveViewControl] from path [/usr/lib/x86_64-linux-gnu/gz-gui-8/plugins/libInteractiveViewControl.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [CameraTracking]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Camera tracking] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [CameraTracking] from path [/usr/lib/x86_64-linux-gnu/gz-gui-8/plugins/libCameraTracking.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [MarkerManager]
+[ruby $(which gz) sim-4] [GUI] [Msg] Listening to stats on [/world/default/stats]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Marker Manager] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [MarkerManager] from path [/usr/lib/x86_64-linux-gnu/gz-gui-8/plugins/libMarkerManager.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [SelectEntities]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Select entities] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [SelectEntities] from path [/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins/gui/libSelectEntities.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [Spawn]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Spawn] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [Spawn] from path [/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins/gui/libSpawn.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [VisualizationCapabilities]
+[ruby $(which gz) sim-4] [GUI] [Msg] View as transparent service on [/gui/view/transparent]
+[ruby $(which gz) sim-4] [GUI] [Msg] View as wireframes service on [/gui/view/wireframes]
+[ruby $(which gz) sim-4] [GUI] [Msg] View center of mass service on [/gui/view/com]
+[ruby $(which gz) sim-4] [GUI] [Msg] View inertia service on [/gui/view/inertia]
+[ruby $(which gz) sim-4] [GUI] [Msg] View collisions service on [/gui/view/collisions]
+[ruby $(which gz) sim-4] [GUI] [Msg] View joints service on [/gui/view/joints]
+[ruby $(which gz) sim-4] [GUI] [Msg] View frames service on [/gui/view/frames]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Visualization capabilities] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [VisualizationCapabilities] from path [/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins/gui/libVisualizationCapabilities.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [WorldControl]
+[ruby $(which gz) sim-4] [GUI] [Msg] Using world control service [/world/default/control]
+[ruby $(which gz) sim-4] [GUI] [Msg] Listening to stats on [/world/default/stats]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [WorldControl.cc:237] Using an event to share WorldControl msgs with the server
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [World control] to main window
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityTree/EntityTree.qml:148:7: QML ToolButton: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [WorldControl] from path [/usr/lib/x86_64-linux-gnu/gz-gui-8/plugins/libWorldControl.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [WorldStats]
+[ruby $(which gz) sim-4] [GUI] [Msg] Listening to stats on [/world/default/stats]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [World stats] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [WorldStats] from path [/usr/lib/x86_64-linux-gnu/gz-gui-8/plugins/libWorldStats.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [Shapes]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Shapes] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [Shapes] from path [/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins/gui/libShapes.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [Lights]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Lights] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [Lights] from path [/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins/gui/libLights.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [TransformControl]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Transform control] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [TransformControl] from path [/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins/gui/libTransformControl.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [Screenshot]
+[ruby $(which gz) sim-4] [GUI] [Msg] Screenshot service on [/gui/screenshot]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Screenshot] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [Screenshot] from path [/usr/lib/x86_64-linux-gnu/gz-gui-8/plugins/libScreenshot.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [CopyPaste]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Copy/Paste] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [CopyPaste] from path [/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins/gui/libCopyPaste.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [ComponentInspector]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Component inspector] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [ComponentInspector] from path [/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins/gui/libComponentInspector.so]
+[ruby $(which gz) sim-4] [GUI] [Dbg] [Application.cc:528] Loading plugin [EntityTree]
+[ruby $(which gz) sim-4] [GUI] [Msg] Currently tracking topic on [/gui/currently_tracked]
+[ruby $(which gz) sim-4] [GUI] [Msg] Added plugin [Entity tree] to main window
+[ruby $(which gz) sim-4] [GUI] [Msg] Loaded plugin [EntityTree] from path [/usr/lib/x86_64-linux-gnu/gz-sim-8/plugins/gui/libEntityTree.so]
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityTree/EntityTree.qml:148:7: QML ToolButton: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/WorldStats/WorldStats.qml:53:3: QML RowLayout: Binding loop detected for property "x"
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:52:3: QML RenderWindowOverlay: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Application.cc:908] [QT] file::/EntityContextMenuPlugin/EntityContextMenuPlugin.qml:67:3: QML EntityContextMenu: Detected anchors on an item that is managed by a layout. This is undefined behavior; use Layout.alignment instead.
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:808] Gazebo does not support Ogre material scripts. See https://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials for details.
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:824] Using an internal gazebo.material to parse Gazebo/Blue
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:808] Gazebo does not support Ogre material scripts. See https://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials for details.
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:824] Using an internal gazebo.material to parse Gazebo/Yellow
+[ruby $(which gz) sim-4] libEGL warning: egl: failed to create dri2 screen
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:808] Gazebo does not support Ogre material scripts. See https://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials for details.
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:824] Using an internal gazebo.material to parse Gazebo/SkyBlue
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:808] Gazebo does not support Ogre material scripts. See https://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials for details.
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:824] Using an internal gazebo.material to parse Gazebo/ZincYellow
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:808] Gazebo does not support Ogre material scripts. See https://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials for details.
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:824] Using an internal gazebo.material to parse Gazebo/Turquoise
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:808] Gazebo does not support Ogre material scripts. See https://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials for details.
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:824] Using an internal gazebo.material to parse Gazebo/Indigo
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:808] Gazebo does not support Ogre material scripts. See https://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials for details.
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:824] Using an internal gazebo.material to parse Gazebo/BlueGlow
+[ruby $(which gz) sim-4] libEGL warning: egl: failed to create dri2 screen
+[ruby $(which gz) sim-4] [INFO] [1730131279.818003024] [GazeboSimROS2ControlPlugin]: robot_param_node is robot_state_publisher
+[ruby $(which gz) sim-4] [INFO] [1730131279.818029464] [GazeboSimROS2ControlPlugin]: robot_param_node is robot_description
+[ruby $(which gz) sim-4] [WARN] [1730131279.825712072] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[ruby $(which gz) sim-4] [WARN] [1730131279.825722822] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+[ruby $(which gz) sim-4] [INFO] [1730131279.844252803] [gz_ros_control]: [gz_ros2_control] Fixed joint [virtual_joint] (Entity=32)] is skipped
+[ruby $(which gz) sim-4] [ERROR] [1730131280.346141970] [gz_ros_control]: robot_state_publisher service not available, waiting again...
+[ruby $(which gz) sim-4] [ERROR] [1730131280.846349226] [gz_ros_control]: robot_state_publisher service not available, waiting again...
+[ruby $(which gz) sim-4] [INFO] [1730131281.124052728] [gz_ros_control]: connected to service!! robot_state_publisher asking for robot_description
+[ruby $(which gz) sim-4] [INFO] [1730131281.125581819] [gz_ros_control]: Received URDF from param server
+[ruby $(which gz) sim-4] [INFO] [1730131281.135504429] [gz_ros_control]: The position_proportional_gain has been set to: 0.1
+[ruby $(which gz) sim-4] [INFO] [1730131281.136259131] [gz_ros_control]: Loading joint: joint2_to_joint1
+[ruby $(which gz) sim-4] [INFO] [1730131281.136368407] [gz_ros_control]: 	State:
+[ruby $(which gz) sim-4] [INFO] [1730131281.136400938] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.136533839] [gz_ros_control]: 	Command:
+[ruby $(which gz) sim-4] [INFO] [1730131281.136549077] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.136950013] [gz_ros_control]: Loading joint: joint3_to_joint2
+[ruby $(which gz) sim-4] [INFO] [1730131281.136988656] [gz_ros_control]: 	State:
+[ruby $(which gz) sim-4] [INFO] [1730131281.137008473] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.137072454] [gz_ros_control]: 	Command:
+[ruby $(which gz) sim-4] [INFO] [1730131281.137086871] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.137174015] [gz_ros_control]: Loading joint: joint4_to_joint3
+[ruby $(which gz) sim-4] [INFO] [1730131281.137209612] [gz_ros_control]: 	State:
+[ruby $(which gz) sim-4] [INFO] [1730131281.137225532] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.137251822] [gz_ros_control]: 	Command:
+[ruby $(which gz) sim-4] [INFO] [1730131281.137271589] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.137326863] [gz_ros_control]: Loading joint: joint5_to_joint4
+[ruby $(which gz) sim-4] [INFO] [1730131281.137355427] [gz_ros_control]: 	State:
+[ruby $(which gz) sim-4] [INFO] [1730131281.137368742] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.137381937] [gz_ros_control]: 	Command:
+[ruby $(which gz) sim-4] [INFO] [1730131281.137392948] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.137431090] [gz_ros_control]: Loading joint: joint6_to_joint5
+[ruby $(which gz) sim-4] [INFO] [1730131281.137449725] [gz_ros_control]: 	State:
+[ruby $(which gz) sim-4] [INFO] [1730131281.137461487] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.137477046] [gz_ros_control]: 	Command:
+[ruby $(which gz) sim-4] [INFO] [1730131281.137488368] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.137529705] [gz_ros_control]: Loading joint: joint6output_to_joint6
+[ruby $(which gz) sim-4] [INFO] [1730131281.137560594] [gz_ros_control]: 	State:
+[ruby $(which gz) sim-4] [INFO] [1730131281.137579459] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.137595069] [gz_ros_control]: 	Command:
+[ruby $(which gz) sim-4] [INFO] [1730131281.137609967] [gz_ros_control]: 		 position
+[ruby $(which gz) sim-4] [INFO] [1730131281.139001188] [resource_manager]: Initialize hardware 'GazeboSimSystem' 
+[ruby $(which gz) sim-4] [WARN] [1730131281.139028500] [gz_ros_control]: On init...
+[ruby $(which gz) sim-4] [INFO] [1730131281.139572034] [resource_manager]: Successful initialization of hardware 'GazeboSimSystem'
+[ruby $(which gz) sim-4] [INFO] [1730131281.139700927] [resource_manager]: 'configure' hardware 'GazeboSimSystem' 
+[ruby $(which gz) sim-4] [INFO] [1730131281.139712078] [gz_ros_control]: System Successfully configured!
+[ruby $(which gz) sim-4] [INFO] [1730131281.139729421] [resource_manager]: Successful 'configure' of hardware 'GazeboSimSystem'
+[ruby $(which gz) sim-4] [INFO] [1730131281.139740822] [resource_manager]: 'activate' hardware 'GazeboSimSystem' 
+[ruby $(which gz) sim-4] [INFO] [1730131281.139748888] [resource_manager]: Successful 'activate' of hardware 'GazeboSimSystem'
+[ruby $(which gz) sim-4] [INFO] [1730131281.139763455] [gz_ros_control]: Loading controller_manager
+[ruby $(which gz) sim-4] [INFO] [1730131281.166784056] [controller_manager]: Subscribing to '/robot_description' topic for robot description.
+[ruby $(which gz) sim-4] [INFO] [1730131281.177256863] [controller_manager]: Received robot description from topic.
+[ruby $(which gz) sim-4] [WARN] [1730131281.177326133] [controller_manager]: ResourceManager has already loaded an urdf file. Ignoring attempt to reload a robot description file.
+[spawner-5] [INFO] [1730131281.395059619] [spawner_arm_controller]: Set controller params file to "/home/anel/GitHub/pick_and_place_ros/my_project/install/mycobot_description/share/mycobot_description/config/simple_controller.yaml" for arm_controller
+[ruby $(which gz) sim-4] [INFO] [1730131281.396288174] [controller_manager]: Loading controller 'arm_controller'
+[ruby $(which gz) sim-4] [WARN] [1730131281.424659141] [arm_controller]: "allow_nonzero_velocity_at_trajectory_end" is set to false. (The default behavior changed to false, and trajectories might get discarded.)
+[spawner-5] [INFO] [1730131281.425945044] [spawner_arm_controller]: Loaded arm_controller
+[ruby $(which gz) sim-4] [INFO] [1730131281.427305959] [controller_manager]: Configuring controller 'arm_controller'
+[ruby $(which gz) sim-4] [INFO] [1730131281.427712294] [arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[ruby $(which gz) sim-4] [INFO] [1730131281.427760605] [arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[ruby $(which gz) sim-4] [INFO] [1730131281.427807594] [arm_controller]: Using 'splines' interpolation method.
+[ruby $(which gz) sim-4] [INFO] [1730131281.438969008] [arm_controller]: Action status changes will be monitored at 20.00 Hz.
+[INFO] [spawner-6]: process started with pid [65029]
+[spawner-6] [WARN] [1730131282.796626159] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[spawner-6] [WARN] [1730131282.796968574] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+[ruby $(which gz) sim-4] [GUI] [Dzebo/resource_paths/resolve].
+[ruby $(which gz) sim-4] [Msg] Resource paths published on [/gazebo/resource_paths].
+[ruby $(which gz) sim-4] [Msg] Server control service on [/server_control].
+[ruby $(which gz) sim-4] [Msg] Found no publishers on /stats, adding root stats topic
+[ruby $(which gz) sim-4] [Msg] Found no publishers on /clock, adding root clock topic
+[ruby $(which gz) sim-4] [Dbg] [SimulationRunner.cc:551] Creating PostUpdate worker threads: 2
+[ruby $(which gz) sim-4] [Dbg] [SimulationRunner.cc:562] Creating postupdate worker thread (0)
+[ruby $(which gz) sim-4] [Dbg] [SystemManager.cc:77] Loaded system [gz_ros2_control::GazeboSimROS2ControlPlugin] for entity [10]
+[ruby $(which gz) sim-4] [Dbg] [UserCommands.cc:1311] Created entity [10] named [mycobot_320pi]
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:332] Mesh construction from an SDF has not been implemented yet for dartsim. Use AttachMeshShapeFeature to use mesh shapes.
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:863] The geometry element of collision [base_link_collision] couldn't be created
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:332] Mesh construction from an SDF has not been implemented yet for dartsim. Use AttachMeshShapeFeature to use mesh shapes.
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:863] The geometry element of collision [link1_collision] couldn't be created
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:332] Mesh construction from an SDF has not been implemented yet for dartsim. Use AttachMeshShapeFeature to use mesh shapes.
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:863] The geometry element of collision [link2_collision] couldn't be created
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:332] Mesh construction from an SDF has not been implemented yet for dartsim. Use AttachMeshShapeFeature to use mesh shapes.
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:863] The geometry element of collision [link3_collision] couldn't be created
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:332] Mesh construction from an SDF has not been implemented yet for dartsim. Use AttachMeshShapeFeature to use mesh shapes.
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:863] The geometry element of collision [link4_collision] couldn't be created
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:332] Mesh construction from an SDF has not been implemented yet for dartsim. Use AttachMeshShapeFeature to use mesh shapes.
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:863] The geometry element of collision [link5_collision] couldn't be created
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:332] Mesh construction from an SDF has not been implemented yet for dartsim. Use AttachMeshShapeFeature to use mesh shapes.
+[ruby $(which gz) sim-4] [Dbg] [SDFFeatures.cc:863] The geometry element of collision [link6_collision] couldn't be created
+[ruby $(which gz) sim-4] [Msg] Serving scene information on [/world/default/scene/info]
+[ruby $(which gz) sim-4] [Msg] Serving graph information on [/world/default/scene/graph]
+[ruby $(which gz) sim-4] [Msg] Serving full state on [/world/default/state]
+[ruby $(which gz) sim-4] [Msg] Serving full state (async) on [/world/default/state_async]
+[ruby $(which gz) sim-4] [Msg] Publishing scene information on [/world/default/scene/info]
+[ruby $(which gz) sim-4] [Wrn] [Component.hh:144] Trying to serialize component with data type [N3sdf3v145WorldE], which doesn't have `operator<<`. Component will not be serialized.
+[ruby $(which gz) sim-4] [WARN] [1730131284.351913020] [gz_ros_control]:  Desired controller update period (0.01 s) is slower than the gazebo simulation period (0.001 s).
+[ruby $(which gz) sim-4] [GUI] [Wrn] [Component.hh:189] Trying to deserialize component with data type [N3sdf3v145WorldE], which doesn't have `operator>>`. Component will not be deserialized.
+[ruby $(which gz) sim-4] [ERROR] [1730131284.403278851] [controller_manager]: Can't activate controller 'arm_controller': State interface with key 'joint2_to_joint1/velocity' does not exist
+[spawner-5] [INFO] [1730131284.460424524] [spawner_arm_controller]: Configured and activated arm_controller
+[ruby $(which gz) sim-4] [INFO] [1730131284.460925758] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[spawner-6] [INFO] [1730131284.564114421] [spawner_joint_state_broadcaster]: Loaded joint_state_broadcaster
+[ruby $(which gz) sim-4] [INFO] [1730131284.565774329] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+[ruby $(which gz) sim-4] [INFO] [1730131284.565896189] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[INFO] [spawner-5]: process has finished cleanly [pid 64751]
+[spawner-6] [INFO] [1730131284.701221183] [spawner_joint_state_broadcaster]: Configured and activated joint_state_broadcaster
+[ruby $(which gz) sim-4] [Msg] Publishing entity deletions on [/world/default/scene/deletion]
+[ruby $(which gz) sim-4] [Msg] Publishing state changes on [/world/default/state]
+[ruby $(which gz) sim-4] [Msg] Publishing pose messages on [/world/default/pose/info]
+[ruby $(which gz) sim-4] [Msg] Publishing dynamic pose messages on [/world/default/dynamic_pose/info]
+[ruby $(which gz) sim-4] [Dbg] [EntityComponentManager.cc:1655] Updated state thread iterators: 16 threads processing around 3 entities each.
+[ruby $(which gz) sim-4] [Dbg] [SimulationRunner.cc:578] Exiting postupdate worker thread (0)
+[ruby $(which gz) sim-4] [Dbg] [SimulationRunner.cc:551] Creating PostUpdate worker threads: 3
+[ruby $(which gz) sim-4] [Dbg] [SimulationRunner.cc:562] Creating postupdate worker thread (0)
+[ruby $(which gz) sim-4] [Dbg] [SimulationRunner.cc:562] Creating postupdate worker thread (1)
+[INFO] [spawner-6]: process has finished cleanly [pid 65029]
+[INFO] [rviz2-7]: process started with pid [65076]
+[rviz2-7] [WARN] [1730131284.983560361] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[rviz2-7] [WARN] [1730131284.983580910] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+[rviz2-7] [INFO] [1730131286.002166610] [rviz2]: Stereo is NOT SUPPORTED
+[rviz2-7] [INFO] [1730131286.002318396] [rviz2]: OpenGl version: 4.6 (GLSL 4.6)
+[rviz2-7] [INFO] [1730131286.057770818] [rviz2]: Stereo is NOT SUPPORTED
+
+# gets active after removing state interface velocity
+$ ros2 control list_controllers
+[WARN] [1730131408.783378760] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[WARN] [1730131408.783396634] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+arm_controller          joint_trajectory_controller/JointTrajectoryController  inactive
+joint_state_broadcaster joint_state_broadcaster/JointStateBroadcaster          active  
+
+
+$ ros2 control list_controllers -v
+arm_controller          joint_trajectory_controller/JointTrajectoryController  inactive
+	claimed interfaces:
+	required command interfaces:
+		joint2_to_joint1/position
+		joint3_to_joint2/position
+		joint4_to_joint3/position
+		joint5_to_joint4/position
+		joint6_to_joint5/position
+		joint6output_to_joint6/position
+	required state interfaces:
+		joint2_to_joint1/position
+		joint2_to_joint1/velocity
+		joint3_to_joint2/position
+		joint3_to_joint2/velocity
+		joint4_to_joint3/position
+		joint4_to_joint3/velocity
+		joint5_to_joint4/position
+		joint5_to_joint4/velocity
+		joint6_to_joint5/position
+		joint6_to_joint5/velocity
+		joint6output_to_joint6/position
+		joint6output_to_joint6/velocity
+	chained to interfaces:
+	exported reference interfaces:
+
+joint_state_broadcaster joint_state_broadcaster/JointStateBroadcaster          active  
+	claimed interfaces:
+	required command interfaces:
+	required state interfaces:
+		joint2_to_joint1/position
+		joint3_to_joint2/position
+		joint4_to_joint3/position
+		joint5_to_joint4/position
+		joint6_to_joint5/position
+		joint6output_to_joint6/position
+	chained to interfaces:
+
+# Claimed after removing velocity as state_interfaces
+$ ros2 control list_hardware_components
+[WARN] [1730131619.789559873] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[WARN] [1730131619.789578779] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+[INFO] [1730131620.365784392] [_ros2cli_65544]: waiting for service /controller_manager/list_hardware_components to become available...
+Hardware Component 1
+	name: GazeboSimSystem
+	type: 
+	plugin name: 
+	state: id=3 label=active
+	command interfaces
+		joint2_to_joint1/position [available] [unclaimed]
+		joint3_to_joint2/position [available] [unclaimed]
+		joint4_to_joint3/position [available] [unclaimed]
+		joint5_to_joint4/position [available] [unclaimed]
+		joint6_to_joint5/position [available] [unclaimed]
+		joint6output_to_joint6/position [available] [unclaimed]
+
+# To move robotic arm
+$ ros2 topic list
+/arm_controller/controller_state
+/arm_controller/joint_trajectory # important
+/arm_controller/transition_event
+/clicked_point
+/clock
+/controller_manager/robot_description
+/diagnostics
+/dynamic_joint_states
+/goal_pose
+/initialpose
+/joint_state_broadcaster/transition_event
+/joint_states
+/parameter_events
+/robot_description
+/rosout
+/tf
+/tf_static
+
+$ ros2 topic info /arm_controller/joint_trajectory
+Type: trajectory_msgs/msg/JointTrajectory
+Publisher count: 0
+Subscription count: 1
+
+$ ros2 control set_controller_state arm_controller active
+[WARN] [1730132237.895019987] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[WARN] [1730132237.895038122] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+[INFO] [1730132238.469212609] [_ros2cli_66273]: waiting for service /controller_manager/list_controllers to become available...
+Successfully activated arm_controller
+
+
+# Publish to above topic (nothing happens if controller is inactive)
+$ ros2 topic pub \
+  /arm_controller/joint_trajectory\
+  trajectory_msgs/msg/JointTrajectory\
+  "{joint_names: ['joint2_to_joint1', 'joint3_to_joint2', 'joint4_to_joint3', 'joint5_to_joint4', 'joint6_to_joint5', 'joint6output_to_joint6'], points: [{positions: [1.2, 0.0, 0.0, 0.0, 0.0, 0.0], time_from_start: {sec: 3, nanosec: 0}}]}"
+
+# Message is sent:
+$ ros2 topic echo /arm_controller/joint_trajectory 
+[WARN] [1730133208.270063583] [rcl]: ROS_LOCALHOST_ONLY is deprecated but still honored if it is enabled. Use ROS_AUTOMATIC_DISCOVERY_RANGE and ROS_STATIC_PEERS instead.
+[WARN] [1730133208.270083070] [rcl]: 'localhost_only' is enabled, 'automatic_discovery_range' and 'static_peers' will be ignored.
+header:
+  stamp:
+    sec: 0
+    nanosec: 0
+  frame_id: ''
+joint_names:
+- joint2_to_joint1
+- joint3_to_joint2
+- joint4_to_joint3
+- joint5_to_joint4
+- joint6_to_joint5
+- joint6output_to_joint6
+points:
+- positions:
+  - 1.5
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  velocities: []
+  accelerations: []
+  effort: []
+  time_from_start:
+    sec: 3
+    nanosec: 0
+
+
+# Move back
+ ros2 topic pub --once \
+  /arm_controller/joint_trajectory \
+  trajectory_msgs/msg/JointTrajectory \
+  "{joint_names: ['joint2_to_joint1', 'joint3_to_joint2', 'joint4_to_joint3', 'joint5_to_joint4', 'joint6_to_joint5', 'joint6output_to_joint6'], points: [{positions: [0.0 0.0 0.0 0.0 0.0 0.0], time_from_start: {sec: 5, nanosec: 0}}]}"
+
+
+$ ros2 control set_controller_state arm_controller active
+[INFO] [1730132238.469212609] [_ros2cli_66273]: waiting for service /controller_manager/list_controllers to become available...
+# In gazebo:
+[ruby $(which gz) sim-4] [WARN] [1730131622.625016446] [controller_manager]: The 'class_type' field in 'controller_manager_msgs/msg/HardwareComponentState.msg' is deprecated and will be removed soon. Please switch over client code to use 'plugin_name' instead.
+[ruby $(which gz) sim-4] [ERROR] [1730132240.545902786] [controller_manager]: Can't activate controller 'arm_controller': State interface with key 'joint2_to_joint1/velocity' does not exist
+```

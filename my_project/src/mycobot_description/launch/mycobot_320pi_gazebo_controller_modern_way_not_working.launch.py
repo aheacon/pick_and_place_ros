@@ -25,6 +25,7 @@ import xacro
 from launch.event_handlers import OnProcessExit
 from launch.conditions import IfCondition
 from launch.actions import TimerAction
+import launch_ros.descriptions
 
 
 def generate_launch_description():
@@ -56,7 +57,12 @@ def generate_launch_description():
             ),
         ]
     )
-    robot_description = {"robot_description": robot_description_content}
+    robot_description = {
+        "use_sim_time": True,
+        "robot_description": launch_ros.descriptions.ParameterValue(
+            robot_description_content, value_type=str
+        ),
+    }
     robot_state_publisher = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -111,6 +117,7 @@ def generate_launch_description():
             # yaw,
         ],
         output="screen",
+        parameters=[{"use_sim_time": True}],
     )
 
     # Gazebo
@@ -139,12 +146,12 @@ def generate_launch_description():
             FindPackageShare(mycobot_description_pkg),
             "config",
             "simple_controller.yaml",
-        ]
+        ],
     )
     control_node = Node(
         package="controller_manager",
         executable="ros2_control_node",
-        parameters=[robot_controllers],
+        parameters=[robot_controllers, {"use_sim_time": True}],
         output="both",
     )
     rviz_config_file = PathJoinSubstitution(
@@ -156,14 +163,15 @@ def generate_launch_description():
     )
 
     # Initialize Arguments
-    gui = LaunchConfiguration("gui")
+    # gui = LaunchConfiguration("gui")
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",
         name="rviz2",
         output="log",
         arguments=["-d", rviz_config_file],
-        condition=IfCondition(gui),
+        parameters=[{"use_sim_time": True}],
+        # condition=IfCondition(gui),
     )
     # load_joint_state_broadcaster = ExecuteProcess(
     #     cmd=[
@@ -180,6 +188,7 @@ def generate_launch_description():
         package="controller_manager",
         executable="spawner",
         arguments=["arm_controller", "--param-file", robot_controllers],
+        parameters=[{"use_sim_time": True}],
     )
 
     #  ros2 run controller_manager spawner --param-file /config/simple_controller.yaml joint_state_broadcaster
@@ -191,6 +200,7 @@ def generate_launch_description():
             # "--controller-manager",
             # "/controller_manager",
         ],
+        parameters=[{"use_sim_time": True}],
     )
 
     delay_joint_state_broadcaster = TimerAction(

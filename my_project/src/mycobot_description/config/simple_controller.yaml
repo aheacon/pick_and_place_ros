@@ -39,7 +39,7 @@ arm_controller:
     # feedback from the hardware interface,
     state_interfaces:
       - position
-      - velocity
+      # - velocity # Can't activate controller 'arm_controller': State interface with key 'joint2_to_joint1/velocity' does not exist
 
     state_publish_rate: 50.0 # Defaults to 50
     action_monitor_rate: 20.0 # Defaults to 20

@@ -1,131 +1,53 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-	<xacro:macro name="dsr_config_coeff">
-
     <!-- I need this for a better simulation in Gazebo-->
     <!-- Based on this https://github.com/dvalenciar/robotic_arm_environment/blob/main/my_doosan_pkg/description/xacro/macro.internal_config.xacro -->
     <!-- and this https://github.com/automaticaddison/mycobot_ros2/blob/main/mycobot_gazebo/urdf/ros2_control/gazebo/mycobot_280.urdf.xacro#L356-->
-
+    <!-- Check this for material colors: https://github.com/gazebosim/gazebo-classic/blob/d0c34b8a5d6bc9a3271000fb1baeb3f8d9f43afa/media/materials/scripts/gazebo.material-->
+    <!--Check this for Gazebo tags http://sdformat.org/tutorials?tut=sdformat_urdf_extensions&cat=specification& -->
+    <!-- ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:824] Using an internal gazebo.material to parse Gazebo/Indigo
+[ruby $(which gz) sim-4] [Wrn] [SdfEntityCreator.cc:808] Gazebo does not support Ogre material scripts. See https://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials for details -->
     <!-- Base -->
     <gazebo reference="base_link">
-      <kp>1000000.0</kp>
-      <kd>100.0</kd>
-      <mu1>30.0</mu1>
-      <mu2>30.0</mu2>
-      <maxVel>1.0</maxVel>
-      <minDepth>0.001</minDepth>
-      <!-- No support Ogre materialfiles like Classic does https://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials -->
-      <!-- <visual>
-        <material>
-        <ambient>0.5 0.5 0.5 1</ambient>
-        <diffuse>0.5 0.5 0.5 1</diffuse>
-        <specular>0.5 0.5 0.5 1</specular>
-        </material>
-      </visual> -->
+      <material>Gazebo/Blue</material>
+      <!-- <material name="blue"/> doesn't work--> 
     </gazebo>
 
     <!-- Link1 -->
     <gazebo reference="link1">
-      <kp>1000000.0</kp>
-      <kd>100.0</kd>
-      <mu1>30.0</mu1>
-      <mu2>30.0</mu2>
-      <maxVel>1.0</maxVel>
-      <minDepth>0.001</minDepth>
-      <!-- <visual>
-        <material>
-          <ambient>0.5 0.5 0.5 1</ambient>
-          <diffuse>0.5 0.5 0.5 1</diffuse>
-          <specular>0.5 0.5 0.5 1</specular>
-        </material>
-      </visual> -->
+      <material>Gazebo/Yellow</material>
     </gazebo>
-    
+
     <!-- Link2 -->
     <gazebo reference="link2">
-      <kp>1000000.0</kp>
-      <kd>100.0</kd>
-      <mu1>30.0</mu1>
-      <mu2>30.0</mu2>
-      <maxVel>1.0</maxVel>
-      <minDepth>0.001</minDepth>
-      <!-- <visual>
-        <material>
-          <ambient>1 1 1 1</ambient>
-          <diffuse>1 1 1 1</diffuse>
-          <specular>1 1 1 1</specular>
-        </material>
-      </visual> -->
+      <material>Gazebo/SkyBlue</material>
     </gazebo>
     
     <!-- Link3 -->
     <gazebo reference="link3">
-      <kp>1000000.0</kp>
-      <kd>100.0</kd>
-      <mu1>30.0</mu1>
-      <mu2>30.0</mu2>
-      <maxVel>1.0</maxVel>
-      <minDepth>0.001</minDepth>
-      <!-- <visual>
-        <material>
-          <ambient>1 1 1 1</ambient>
-          <diffuse>1 1 1 1</diffuse>
-          <specular>1 1 1 1</specular>
-        </material>
-      </visual> -->
+      <material>Gazebo/ZincYellow</material>
     </gazebo>
     
     <!-- Link4 -->
     <gazebo reference="link4">
-      <kp>1000000.0</kp>
-      <kd>100.0</kd>
-      <mu1>30.0</mu1>
-      <mu2>30.0</mu2>
-      <maxVel>1.0</maxVel>
-      <minDepth>0.001</minDepth>
-      <!-- <visual>
-        <material>
-          <ambient>1 1 1 1</ambient>
-          <diffuse>1 1 1 1</diffuse>
-          <specular>1 1 1 1</specular>
-        </material>
-      </visual> -->
+      <material>Gazebo/Turquoise</material>
     </gazebo>
     
     <!-- Link5 -->
     <gazebo reference="link5">
-      <kp>1000000.0</kp>
-      <kd>100.0</kd>
-      <mu1>30.0</mu1>
-      <mu2>30.0</mu2>
-      <maxVel>1.0</maxVel>
-      <minDepth>0.001</minDepth>
-      <!-- <visual>
-        <material>
-          <ambient>1 1 1 1</ambient>
-          <diffuse>1 1 1 1</diffuse>
-          <specular>1 1 1 1</specular>
-        </material>
-      </visual> -->
+
+      <material>Gazebo/Indigo</material>
     </gazebo>
     
     <!-- Link6 -->
     <gazebo reference="link6">
-      <kp>1000000.0</kp>
+      <!-- <kp>1000000.0</kp>
       <kd>100.0</kd>
       <mu1>30.0</mu1>
       <mu2>30.0</mu2>
       <maxVel>1.0</maxVel>
-      <minDepth>0.001</minDepth>
-      <!-- <visual>
-        <material>
-          <ambient>1 1 1 1</ambient>
-          <diffuse>1 1 1 1</diffuse>
-          <specular>1 1 1 1</specular>
-        </material>
-      </visual> -->
+      <minDepth>0.001</minDepth> -->
+      <material>Gazebo/BlueGlow</material>
     </gazebo>
-
-	</xacro:macro>
 </robot>
