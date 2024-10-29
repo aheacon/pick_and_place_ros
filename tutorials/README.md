@@ -26,6 +26,7 @@
     - joint_state_broadcaster: This controller publishes the state of all resources registered to a hardware_interface::StateInterface to a topic of type sensor_msgs/msg/JointState.
     - joint_trajectory_controller: This controller creates an action called /joint_trajectory_controller/follow_joint_trajectory of type control_msgs::action::FollowJointTrajectory.
 
+- Gazebo has 2 processes `server` and `client` - `pstree` (`gzserver`, `gzclient`)
 - http://gazebosim.org/tutorials?tut=ros_urdf 
 - Gazebo does not support Ogre material scripts. See https://gazebosim.org/api/sim/8/migrationsdf.html#:~:text=Materials for details.
 
@@ -72,6 +73,93 @@ $ urdf_to_graphviz mycobot320pi_test.urdf mycobot320pi # verfiy kinematic chaing
 ```
 # ROS2 Humble with custom robot
 ## ros2_control
+```bash
+# [Err] [SystemLoader.cc:92] Failed to load system plugin [gz_ros2_control-system] : Could not find shared library. -->
+# Gazebo Fortress and Humble are supported from pacakge `ros-humble-ign-ros2-control` https://github.com/ros-controls/gz_ros2_control/tree/humble-->
+# We need to build the gz_ros2_control for Harmonic only from source https://github.com/ros-controls/gz_ros2_control/tree/iron and switch to ROS2 Iron 
+$ mkdir -p gz_ros2_control_ws/src && cd gz_ros2_control_ws/src
+$ git clone git@github.com:ros-controls/gz_ros2_control.git --branch iron
+$ $ echo $ROS_DISTRO
+iron
+# Uninstall ROS2 humble and humble gazebo packages (or maybe not https://github.com/ros-controls/gz_ros2_control/issues/394 ?)
+$ sudo apt remove ros-humble-desktop
+$ sudo apt remove ros-humble-ros-gzharmonic
+$ sudo apt autoremove
+$ sudo rm -rf /opt/ros/humble/
+# Make sure to install iron ROS2
+$ sudo apt install ros-${ROS_DISTRO}-desktop
+$ ls /opt/ros/
+iron
+# Install gazebo for iron
+$ sudo apt update && sudo apt install ros-${ROS_DISTRO}-ros-gzharmonic # add it to source
+# Install ros2_control pacakges https://control.ros.org/iron/doc/getting_started/getting_started.html
+$ sudo apt-get install ros-${ROS_DISTRO}-ros2-control ros-${ROS_DISTRO}-ros2-controllers
+$ sudo apt-get remove gz-tools2 && sudo apt autoremove
+$ sudo apt install ros-${ROS_DISTRO}-gazebo-ros2-control && sudo apt install ros-${ROS_DISTRO}-ros-gzharmonic  # again had to install
+$ sudo apt install ros-${ROS_DISTRO}-joint-state-publisher-gui # need to install
+# [ERROR] [launch]: Caught exception in launch (see debug for traceback): "package 'controller_manager' not found, searching: ['/home/anel/GitHub/pick_and_place_ros/my_project/install/mycobot_description', '/opt/ros/iron']"
+
+
+#  Instal gz_ros2_control
+$ mkdir -p gz_ros2_control_ws/src &&  cd gz_ros2_control_ws/src
+$ git clone https://github.com/ros-controls/gz_ros2_control -b ${ROS_DISTRO}
+$ export GZ_VERSION=harmonic
+# Problem with rosdep?
+$ rosdep install -r --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y
+ERROR: the following packages/stacks could not have their rosdep keys resolved
+to system dependencies:
+gz_ros2_control: No definition of [gz-plugin2] for OS [ubuntu]
+Continuing to install resolvable dependencies...
+#All required rosdeps installed successfully
+
+$ sudo apt-get install libgz-plugin2-dev # already on the latest
+
+$ cd ~/gz_ros2_control_ws && colcon build
+Finished <<< gz_ros2_control [16.5s]
+Starting >>> gz_ros2_control_demos
+Starting >>> gz_ros2_control_tests
+Finished <<< gz_ros2_control_demos [8.63s]                                                                            
+Finished <<< gz_ros2_control_tests [8.72s]                   
+
+Summary: 3 packages finished [25.5s]
+  1 package had stderr output: gz_ros2_control
+
+$ find .|grep stderr # it is cmake warning
+
+# Use it by sourcing (launch file works)
+$ source /home/anel/GitHub/gz_ros2_control_ws/install/setup.bash
+# $ protoc --version
+#libprotoc 28.2
+# $ sudo apt-get remove --purge libprotobuf-dev protobuf-compiler && sudo apt-get install libprotobuf-dev=3.12.4-1ubuntu1 protobuf-compiler=3.12.4-1ubuntu1
+
+
+# Start launch file and check log file
+```
+- Found [Robot state publisher vs Joint state publisher](https://www.youtube.com/watch?v=9BdAkrX4Xkg)
+  - `RSS` vs `JSP`
+  - `ros2 param load <urdf> robot_description` # `param server` is like database that ROS provides to store parameters that any ROS program can access, exchange the same parameters for different ROS programs - load it and use it to visualize in RVIZ. `load <node_name> <parameter_file>`
+    - Controller configuration is also loaded in `param server`
+    - `ros2 param list`
+    - `ros2 param get /robot_state_publisher robot_description` - the whole xml file
+    - Visualise in rviz2 `ros2 run rviz2 rviz2` => Add `Robot Model` change descirption to `robot_description` topic and set fixed frame to `base_link`. Since we have `/robot_state_publisher` all works,since tranformations between links are known. 
+  - ▸ What is Robot State Publisher
+    - Is node, that uses URDF specified by `robot_description` and `joint positions` from the topic `joint_states` and calculatres transformations  (direct kinematic) and publishes to the `tf`.
+  - ▸ What is the role of the /joint_states topic
+    `$ ros2 topic info /joint_states` in my case there is 1 publisher and 1 subscriber
+    - We need to publish the values of `/joint_states` and that is the job for `joint_state_publisher` (how to see publishers and subscribers) 
+  - ▸ What is the Joint State Publisher
+    - It is emulator, faking the status - not moving the robot, just visualize
+    - Publishes messages of joint values in topic `JointState`. Reads URDF (from `robot_description`) and reads all non-fixed joints.
+    - `use_gui = true` - showing values for each joint
+    - Which value to show ?
+    - `sudo apt install ros-iron-joint-state-publisher-gui`
+    - `ros2 run joint_state_publisher_gui joint_state_publisher_gui`
+  - ▸ What is `JointStateController`
+    - Special kind of contrller that is publishing into the `/joint_states` topic the current position of all the joints. 
+    - Both are publishing to `joint_states` topic
+  - ▸ When to use Rviz to visualize the joint states and when to use Gazebo
+    - When working with real robot not using `joint_state_publisher` but instead using `joint_state_controller`
+- List of [ros2_controllers](https://control.ros.org/rolling/doc/ros2_controllers/doc/controllers_index.html)
 - Modern Gazebo
   - https://github.com/ros-controls/gz_ros2_control
 - Classic Gazebo

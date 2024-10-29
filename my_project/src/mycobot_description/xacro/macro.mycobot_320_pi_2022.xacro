@@ -11,22 +11,25 @@
     <material name="white">
       <color rgba="1 1 1 1" />
     </material>
-  
+
     <material name="orange">
       <color rgba="1 0.3 0.1 1"/>
     </material>
-  
+
     <material name="blue">
       <color rgba="0.2 0.2 1 1"/>
     </material>
-  
+
     <material name="black">
       <color rgba="0 0 0 1"/>
     </material>
-  
+
     <material name="red">
       <color rgba="1 0 0 1"/>
     </material>
+
+    <xacro:property name="effort" value="411"/>
+    <xacro:property name="velocity" value="3.1416"/>
 
     <!-- Base -->
     <link name="base_link">
@@ -219,62 +222,63 @@
     <!-- Joints -->
     <joint name="joint2_to_joint1" type="revolute">
       <axis xyz="0 0 1"/>
-      <limit effort = "1000.0" lower = "-2.96" upper = "2.96" velocity = "0"/>
+      <limit effort = "${effort}" lower = "-2.96" upper = "2.96" velocity = "${velocity}"/>
       <parent link="base_link"/>
       <child link="link1"/>
       <origin xyz= "0 0 0.162" rpy = "0 0 0"/> 
-      <dynamics damping="0.05" friction="0.05" /> <!-- From https://github.com/automaticaddison/mycobot_ros2/blob/main/mycobot_gazebo/urdf/mycobot_280_gazebo.urdf.xacro#L383C29-L383C51-->
+      <!-- From https://github.com/automaticaddison/mycobot_ros2/blob/main/mycobot_gazebo/urdf/mycobot_280_gazebo.urdf.xacro#L383C29-L383C51-->
     </joint>
 
 
     <joint name="joint3_to_joint2" type="revolute">
       <axis xyz="0 0 1"/>
-      <limit effort = "1000.0" lower = "-2.79" upper = "2.79" velocity = "0"/>
+      <limit effort = "${effort}" lower = "-2.79" upper = "2.79" velocity = "${velocity}"/>
       <parent link="link1"/>
       <child link="link2"/>
       <origin xyz= "0 0 0" rpy = "0 -1.5708 1.5708"/>
-      <dynamics damping="0.0" friction="0.0"/>
+      <dynamics damping="0.05" friction="0.05"/>
+
     </joint>
 
 
     <joint name="joint4_to_joint3" type="revolute">
       <axis xyz=" 0 0 1"/>
-      <limit effort = "1000.0" lower = "-2.79" upper = "2.79" velocity = "0"/>
+      <limit effort = "${effort}" lower = "-2.79" upper = "2.79" velocity = "${velocity}"/>
       <parent link="link2"/>
       <child link="link3"/>
       <origin xyz= "0.13635 0 0   " rpy = "0 0 0"/>
-      <dynamics damping="0.0" friction="0.0"/>
+      <dynamics damping="0.205" friction="0.15"/>
     </joint>
 
 
     <joint name="joint5_to_joint4" type="revolute">
       <axis xyz=" 0 0 1"/>
-      <limit effort = "1000.0" lower = "-2.79" upper = "2.79" velocity = "0"/>
+      <limit effort = "${effort}" lower = "-2.79" upper = "2.79" velocity = "${velocity}"/>
       <parent link="link3"/>
       <child link="link4"/>
       <!-- <origin xyz = "0.12 0 0.09 " rpy = " 0 0 1.57080"/> -->
       <origin xyz = "0.1205 0 0.082 " rpy = " 0 0 1.57080"/>
-      <dynamics damping="0.0" friction="0.0"/>
+      <dynamics damping="0.21" friction="0.41"/>
     </joint>
 
 
     <joint name="joint6_to_joint5" type="revolute">
       <axis xyz="0 0 1"/>
-      <limit effort = "1000.0" lower = "-2.96" upper = "2.96" velocity = "0"/>
+      <limit effort = "${effort}" lower = "-2.96" upper = "2.96" velocity = "${velocity}"/>
       <parent link="link4"/>
       <child link="link5"/>
       <origin xyz= "0 -0.084 0" rpy = "1.5708 0 0"/>
-      <dynamics damping="0.0" friction="0.0"/>
+      <dynamics damping="0.10" friction="0.20"/>
     </joint>
 
 
     <joint name="joint6output_to_joint6" type="revolute">
       <axis xyz="0 0 1"/>
-      <limit effort = "1000.0" lower = "-3.05" upper = "3.05" velocity = "0"/>
+      <limit effort = "${effort}" lower = "-3.05" upper = "3.05" velocity = "${velocity}"/>
       <parent link="link5"/>
       <child link="link6"/>
       <origin xyz= "0 0.06635 0" rpy = "-1.5708 0 0"/>
-      <dynamics damping="0.0" friction="0.0"/>
+      <dynamics damping="0.01" friction="0.005"/>
     </joint>
   </xacro:macro>
 </robot>

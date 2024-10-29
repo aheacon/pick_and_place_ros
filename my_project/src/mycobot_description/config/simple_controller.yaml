@@ -50,7 +50,7 @@ arm_controller:
     
     # If true, When set to true, the controller will not use any feedback from the system 
     # (e.g., joint positions, velocities, efforts) to compute the control commands.
-    # open_loop_control: false
+    open_loop_control: true
 
     # When set to true, it allows the controller to integrate the trajectory goals it receives.
     # This means that if the goal trajectory only specifies positions, the controller will 
