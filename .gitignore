@@ -53,7 +53,11 @@ qtcreator-*
 # Catkin custom files
 CATKIN_IGNORE
 
+# Editors
+.vscode
+
 # Workspaces
 ros2_ws_webots
 ros2_ws
 webot_ws
+

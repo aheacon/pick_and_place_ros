@@ -3,9 +3,9 @@
 
 # System
 - Ubuntu `jammy` 22.04
-- ROS2  (Humble LTS)
+- ROS2  (Iron LTS)
 - Gazebo Harmonic (Gazebo 8) (LTS)
-- Elephant 320_pi
+- Elephant mycobo_320_pi
 
 # Scope 1
 Tasks that will be done
@@ -17,31 +17,63 @@ Tasks that will be done
 6. DRL
 
 
-## Getting started
-### Start robot
+## 🟢 1. Start robot 
 - To start our robot from `my_project` directory
 ```bash
 $ cd my_project
+$ 
+# Do this before every change
 $ rm -rf build/ install/ log/
+$ rosdep install --from-paths src --ignore-src -r -y
+#All required rosdeps installed successfully
 $ colcon build
+Summary: 1 package finished [1.35s]
+$ source install/setup.bash
+```
+- Check `Rviz` visualisator
+```bash
 $ ros2 launch mycobot_description mycobot_320pi.launch.py
 ```
+  - One should get this picture
+  ![alt text](mycobot_rvis_joint_state_publisher_gui.png)
+  - To stop any process by force run
+  ```bash
+  $ kill -9 `pgrep -x 'rviz2'`
+  ```
+- Check `Gazebo` simulator
+```bash
+$ ros2 launch mycobot_description gazebo_mycobot_320pi.launch.py
+```
+  - Use the `joint` positions to navigate robot from GUI
+  - Alternatively use following commands from terminal
+  ```bash
+  # Move robot to desired position
+  $ ros2 topic pub \
+  arm_controller/joint_trajectory\
+  trajectory_msgs/msg/JointTrajectory\
+  "{joint_names:['joint2_to_joint1', 'joint3_to_joint2', 'joint4_to_joint3', 'joint5_to_joint4', 'joint6_to_joint5', 'joint6output_to_joint6'], points: [{positions: [-1,1,-1,-2,0.5,0], time_from_start: {sec: 0, nanosec: 0}}]}"
+
+  # Move it back on original position
+  $ ros2 topic pub \
+  arm_controller/joint_trajectory\
+  trajectory_msgs/msg/JointTrajectory\
+  "{joint_names:['joint2_to_joint1', 'joint3_to_joint2', 'joint4_to_joint3', 'joint5_to_joint4', 'joint6_to_joint5', 'joint6output_to_joint6'], points: [{positions: [0,0,0,0,0,0], time_from_start: {sec: 0, nanosec: 0}}]}"
+
+  ```
+  - One should obtain the following picture
+  ![alt text](gazebo_rviz_rqt_joint_controller.png)
+  - To stop `Gazebo` (and other programs) by force
+  ```bash
+  $ kill -9 `pgrep -x 'ruby'`
+  ```
 
 ## Tutorials
-## 1. Getting started with ROS2 and myCobot
-
 - Refer to [Getting started with ROS2 and myCobot 320](1_getting_started_with_ros2_and_mycobot320.md) (**done** ✅)
-- Refer to [Getting started with ROS2 and myCobot with Gazebo simulator](2_getting_started_with_mycobot_gazebo.md)(**in progress** 🔴)
-- Refer to [Getting started with ROS2 and myCobot with Webots simulator](3_getting_started_with_mycobot_webots.md) (**cannot be done with ROS2** :x:)
-  - Eveything else is blocked since there is no way to simulate interface (no `launch` file between ROS2 and Webots). 
-    - Options:
-    1. Use `ubuntu 20.4` (`ROS1`) - issue: VM settings
-    2. Use `ROS2` and `Gazebo` - issue: learning `Gazebo`
-    3. Postpone this scope and switch to [Scope 2 (`NVIDIA Isaac`)](#scope2)
-
+- Refer to [Getting started with ROS2 and myCobot with Gazebo simulator](2_getting_started_with_mycobot_gazebo.md)(**done** ✅)
+- Refer to [Getting started with ROS2 and myCobot with Webots simulator](3_getting_started_with_mycobot_webots.md) (**for later** 🛠️)
 
 # <a name="scope2"></a>Scope 2
-### Blocker :x:
+### Blockers :x:
 1. Getting started with `NVIDIA Isaac Sim` (**currently cannot be done on my hardware**:x:)
   - Needs better GPU and Isaac Sim is not rendering
 

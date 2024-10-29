@@ -13,6 +13,7 @@
 5. [myCobot Isaac Gym](https://www.hackster.io/Elephant-Robotics-Official/mycobot-gripping-task-reinforcement-learning-with-isaac-gym-5621db)
 
 ### 1.2 Steps to build
+- Note this is not needed since we are going to create our own package ⛔
 ```bash
 $ mkdir -p ros2_ws/src
 $ cd ros2_ws/src
@@ -198,7 +199,7 @@ $ ros2 launch mycobot_320 test.launch.py
 
 
 ### 1.4 Real robot connection 💁
-- TODO 💁 for later
+- TODO 💁 for later ⚒️
 - Check [this](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.4-rviz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/) for serial connection 
 - Check [Basic Learning, unbox robot](https://www.youtube.com/watch?app=desktop&v=WPDMkrLcMIE)
 - Check [other](https://www.youtube.com/watch?app=desktop&v=yhFuFvxx8aI)

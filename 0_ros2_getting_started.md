@@ -1,12 +1,145 @@
 # ROS tutorials
 
-### ROS2 installation 22.04 (jammy)
+## 1. Installation procedure ✅
+
+### 1.1 ✅ ROS2 installation Ubuntu 22.04 (jammy)
+
+- Work on `mycobot_320_pi` uses `ROS2 Iron Irwin` package, as the latest package for Ubuntu 22.04, see [ROS2 Iron installation](https://docs.ros.org/en/iron/index.html)
+  - Beside this version is the latest version for OS, other reason is to use one of newest Gazebo version `Harmonic`(LTS EOL 2028)
+    - See [gazebo releases](https://gazebosim.org/docs/all/releases/) and [gazebo installation](https://gazebosim.org/docs/all/ros_installation/) for further reading
+  - In theory `ROS2 humble` can also work with Harmonic.
+    - Howerver there was the problem with [gz_ros2_control package](https://github.com/ros-controls/gz_ros2_control)
+    - For `Humble` this version must use `Fortress` and `ros-humble-ign-ros2-control` that is old `Gazebo Ignition`, but `Iron`
+
+### 1.2 ✅ ROS2 Iron installation
 <details>
   <summary>
-    Installing ROS2 Humble (LTS) on 22.04
+    (This is used in our example) Installing ROS2 Humble (LTS) on 22.04 ✅
   </summary>
 
-  Based on [this](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) and [this for Gazebo](https://robotics.stackexchange.com/questions/23554/how-to-install-gazebo-to-use-along-with-ros2-humble-hawksbill-on-ubuntu-22-04) (I didn't used [this for Gazebo](https://gazebosim.org/docs/latest/ros_installation/))
+  - Based on [ROS2 Iron installation](https://docs.ros.org/en/iron/index.html)
+  ```bash  
+  $ extract ROS_DISTRO=iron # add this to ~/.bashrc
+  $ echo $ROS_DISTRO
+  iron
+  $ sudo apt update && sudo apt install curl -y
+  $ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+  $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+  $ sudo apt install ros-${ROS_DISTRO}-desktop
+  # Check that "underlay" directory is created
+  $ ls /opt/ros/
+  iron
+  ```
+</details>
+
+### 1.3 ✅ Gazebo Harmonics installation
+- To use the `Gazebo` there are 2 ways:
+  1. `classic` way gazebo
+    - [check link](https://classic.gazebosim.org/)
+    - it will be obsolete at January 2025
+  2. `new way` (modern)
+    - it has `ign` (Ignition Gazebo) and [ros_gz](https://github.com/gazebosim/ros_gz) (modern)
+    - [learn more](https://gazebosim.org/docs/latest/tutorials/)
+- Each version of ROS works best with a specific version of each Tier 1 platform.
+  Tier 1 platforms are platforms/host operating systems that are used in the development of ROS and Gazebo.
+  Best is to use the latest LTS version of ROS and the Tier 1 platform / operating system recommend for that version of ROS.
+  ROS 2 `Humble` (or `Iron`) LTS(22.04) works the best with GZ `Fortress`(LTS) , while with GZ `Harmonic` (LTS) it has some problems.
+  By default when installing from `ros-gz*` recommended version of Gazebo is installed for specific OS, like for 22.04 for `Humble` it will be `Fortress`.
+  Otherwise one need to use __non ROS official__ Gazebo version to combine the desired ROS2 and Gazebo versions.
+  Too see official packages check [http://packages.ros.org/ros2/ Packages](http://packages.ros.org/ros2/ubuntu/dists/jammy/main/binary-amd64/Packages) (search for `ros-iron-ros-gz`)
+- **Caution**
+  - Packages `ros-${ROS_DISTRO}-ros-gz*` hosted on __ROS official__ repository __http://packages.ros.org/ros2/__, conflict with __non ROS official__ binary packages hosted in __packages.osrfoundation.org__, like `ros-{ROS_DISTRO}-ros-gzharmonic`
+  - It is recommended to install that bash $ sudo apt-get install ros-humble-ros-gzharmonic  - not possible with Gz Ionic. ROS 2 Jazzy (LTS)(24.04) works only with GZ Harmonic (LTS) ROS 2 Rolling(latest ROS) works only with Gz Ionic
+- Ubuntu 22.04 `Jammy` supports `Gazebo Harmonics` (EOL Sep, 2028) as recommended distro, based on [install procedure](https://gazebosim.org/docs/latest/getstarted/)
+  - However `Gazebo Fortress` (EOL Sep, 2026) is recommended if using ROS2(`Humble`, `Iron`).
+    - However, `Gazebo Fortress` is `Ignition` Gazebo and is obsolete (`ign gazebo` command is not supported in the modern version where `gz sim` command is used)
+- `Gazebo Harmonics` is recommended to the newest version of Ubuntu 24.04. `Noble` for ROS2 `Jazzy`.
+https://gazebosim.org/docs/harmonic/install_ubuntu/
+
+<details>
+  <summary>
+    (This is used in our example) Installing Gazebo Harmonics ✅
+  </summary>
+
+  - This is based on [installation process GZ Harmonics](https://gazebosim.org/docs/harmonic/install_ubuntu/)
+  ```bash
+  # Install Gazebo Harmonics for Iron from non-ROS official repository
+  $ sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+  $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
+  $ sudo apt-get update
+  $ sudo apt-get install gz-harmonic # ths is installing all packages
+  # use gz sim
+  # Alternatively install just package
+  $ sudo apt update && sudo apt install ros-${ROS_DISTRO}-ros-gzharmonic # add it to source
+  ```
+  - Uninstall
+  ```bash
+  $ sudo apt remove gz-harmonic && sudo apt autoremove
+  ```
+</details>
+
+### 1.4 ✅ ROS2 gz_ros2_control and additional packages installation
+**List of packages we need to install**
+  - We need to install couple of packages to interact with robot
+  - 1. `joint_state_publisher`: This repository has 2 packages [ros package](https://index.ros.org/r/joint_state_publisher/github-ros-joint_state_publisher/)
+    - `joint_state_publisher`: We need this package to send control to `/joint_states` topic (published by the `robot_state_publisher`)
+    - `joint-state-publisher-gui`: We need this package to use GUI to control joints(see [ros package](https://index.ros.org/p/joint_state_publisher_gui/))
+      - To use it `$ ros2 run joint_state_publisher_gui joint_state_publisher_gui`
+      - Use it only for `Rviz` not for `Gazebo`
+  - 2. `ros2_control`
+    - use abstract hardware interface, resource controller (that integrates hardware interface), controllers (custom controllers) and controll_manager that act between controllers and resource manager
+    - check [ros repository](https://index.ros.org/r/ros2_control/github-ros-controls-ros2_control/) and [ros package](https://index.ros.org/p/ros2_control/github-ros-controls-ros2_control/#iron)
+    - check [robot_state_publisher repository](https://index.ros.org/r/robot_state_publisher/github-ros-robot_state_publisher/) for more info
+  - 3. `gz_ros2_control`: We need this plugin to control our robot with `ros2_control` package
+  - 4. `rqt_joint_trajectory_controller`
+    - [check more](https://wiki.ros.org/rqt_joint_trajectory_controller)
+<details>
+  <summary>
+    (This is used in our example) Installing ROS2 packages ✅
+  </summary>
+
+  ####  1. joint_state_publisher
+  ```bash
+  $ sudo apt install ros-${ROS_DISTRO}-joint-state-publisher ros-${ROS_DISTRO}-joint-state-publisher-gui # need to install
+  ```
+
+  ####  2. ros2_control
+  - Install `ros2_control`, based on [ros2_control installation](https://control.ros.org/iron/doc/getting_started/getting_started.html)
+  ```bash
+  $ sudo apt update
+  # Install ros2_control pacakges
+  $ sudo apt-get install ros-${ROS_DISTRO}-ros2-control ros-${ROS_DISTRO}-ros2-controllers
+  # no need for ros-${ROS_DISTRO}-gazebo-ros2-control
+  ```
+
+  ####  3. gz_ros2_control
+  - Install `gz_ros2_control` package for `ROS_DISTRO=iron`
+  ```bash
+  $ export GZ_VERSION=harmonic # add this to ~/.bashrc
+  $ mkdir -p gz_ros2_control_ws/src &&  cd gz_ros2_control_ws/src
+  $ git clone https://github.com/ros-controls/gz_ros2_control -b ${ROS_DISTRO}
+  # Don't worry about errors here in stderr (it is cmake output)
+  $ rosdep install -r --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y
+  #All required rosdeps installed successfully
+  $ cd ../gz_ros2_control_ws && colcon build
+  $ source install/setup.bash # put it in ~/.bashrc (full path)
+  ```
+</details>
+
+####  4. rqt_joint_trajectory_controller
+```bash
+$ sudo apt-get install ros-${ROS_DISTRO}-rqt-joint-trajectory-controller
+# Use it as
+$ ros2 run rqt_joint_trajectory_controller rqt_joint_trajectory_controller
+```
+
+### 1.5 ⛔ ROS2 Humble installation
+<details>
+  <summary>
+    (Not used in our example) Installing ROS2 Humble (LTS) on 22.04 ⛔
+  </summary>
+
+  Based on [[ROS2 Humble installation](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) and [this for Gazebo](https://robotics.stackexchange.com/questions/23554/how-to-install-gazebo-to-use-along-with-ros2-humble-hawksbill-on-ubuntu-22-04) (I didn't used [this for Gazebo](https://gazebosim.org/docs/latest/ros_installation/))
   Following [gazebosim.org](https://gazebosim.org/docs/all/install_ubuntu/)
   ```bash
   $ sudo apt update && sudo apt install curl -y
@@ -72,13 +205,21 @@
   # Now it works
   $ gz sim
   ```
+
+  - To uninstall
+  ```bash
+  # Uninstall ROS2 humble and humble gazebo packages (or maybe not https://github.com/ros-controls/gz_ros2_control/issues/394 ?)
+  $ sudo apt remove ros-humble-desktop
+  $ sudo apt remove ros-humble-ros-gzharmonic
+  $ sudo apt autoremove
+  $ sudo rm -rf /opt/ros/humble/
+  ```
 </details>
 
-
-### ROS1 installation 20.4 (focal)
+### 1.6 ⛔ ROS1 installation 20.4 (focal)
 <details>
   <summary>
-    Installing ROS1 Noetic (LTS) on 22.04 (you can **skip it**)
+    Installing ROS1 Noetic (LTS) on 22.04 (you can **skip it**) ⛔
   </summary>
 
   - Install ROS 1 (can be done on 20.04) - [see](https://cyberbotics.com/doc/guide/tutorial-9-using-ros)
@@ -120,12 +261,11 @@
 </details>
 
 
-## ROS learnings
+## 2. ROS learnings 🛠️
+- TODO more for later whole this chapter 🛠️
 - Based on [ROS2 tutorials](https://docs.ros.org/en/crystal/Tutorials.html)
 
-
-### CLI tools
-
+### 2.1 CLI tools 🛠️
 - 1.[Setup](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html):
   - `colcon_ws`
     - official default ROS2 workspace (location on system where we develope ROS2)
@@ -232,7 +372,7 @@
     - `ros2 bag  info rosbag2_2024_10_05-15_34_46` info about the folder
     - ` ros2 bag play rosbag2_2024_10_05-15_34_46`
 
-### Client libraries
+### 2.2 Client libraries
 
   1. [Creating the workspace](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html)
     - A workspace is a directory containing ROS 2 packages
@@ -457,7 +597,7 @@
     - TODO it is for C++
 
 
-### Intermediate
+### 2.3 Intermediate
   1. [Managing Dependencies with rosdep](https://docs.ros.org/en/humble/Tutorials/Intermediate/Rosdep.html)
     - rosdep is a dependency management utility that can work with packages and external libraries.
     - `apt-get install python3-rosdep`
@@ -508,7 +648,7 @@
     - [User guide](https://docs.ros.org/en/humble/Tutorials/Intermediate/RViz/RViz-User-Guide/RViz-User-Guide.html)
     - [Documentation](https://wiki.ros.org/rviz2)
 
-### Advanced
+### 2.4 Advanced
   1. [Simulators](https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Simulation-Main.html)
   - [Webots](https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Simulation-Webots.html)
   - [Gazebo](https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Gazebo/Gazebo.html)
@@ -527,8 +667,8 @@
   - See [ros2/examples](https://github.com/ros2/examples/tree/humble/rclpy/topics)
 
 
-
-## ROS2 tutorials and mycobot
+## 3. ROS2 tutorials and mycobot 🛠️
+- TODO for later whole this chapter
 - Based on [this](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.1-ROS2%E7%9A%84%E5%AE%89%E8%A3%85.html)
 - Dependency `ros2` and `moveIT2` (`sudo apt-get install ros-humble-moveit`)
 - `mycobot_ros2` ROS2 package http://github.com/elephantrobotics/mycobot_ros2

@@ -11,6 +11,14 @@
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
   <test_depend>python3-pytest</test_depend>
+  
+  <depend>ros2_control</depend>
+  <depend>ros2_controllers</depend>
+  <depend>xacro</depend>
+  <depend>ros_gz_sim</depend>
+  <depend>controller_manager</depend>
+  <depend>trajectory_msgs</depend>
+  <depend>rqt_joint_trajectory_controller</depend>
 
   <export>
     <build_type>ament_python</build_type>

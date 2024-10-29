@@ -79,3 +79,10 @@ TODO
 - **FIX**
   - To fix the issue `Pause` and `Reset Simulation` (restore to initial state) or `Tools->Preferences->General->Startup mode` and choose `Pause` over `Real time`
 
+## TODO 🛠️
+- TODO for later
+- Eveything else is blocked since there is no way to simulate interface (no `launch` file between ROS2 and Webots). 
+  - Options:
+  1. Use `ubuntu 20.4` (`ROS1`) - issue: VM settings
+  2. Use `ROS2` and `Gazebo` - issue: learning `Gazebo`
+  3. Postpone this scope and switch to [Scope 2 (`NVIDIA Isaac`)](#scope2)
