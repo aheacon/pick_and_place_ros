@@ -11,6 +11,7 @@ TODO
 - TODO for later - needs polishing
 
 ## Gazebo ignition
+- `pstree # find gz_server gz_client`
 - Versions:
 Ionic (9.x.x), Harmonic (8.x.x), Garden (7.x.x), and Fortress (6.x.x) 
 ```bash

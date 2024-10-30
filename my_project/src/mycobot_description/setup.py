@@ -28,6 +28,10 @@ setup(
     license="Apache-2.0",
     tests_require=["pytest"],
     entry_points={
-        "console_scripts": [],
+        "console_scripts": [
+            f"trajectory_points_topic = {package_name}.joint_points_topic:main",
+            f"trajectory_points_act_server ={package_name}.joint_points_act_service:main",
+            f"example_joint_publisher ={package_name}.example_joint_publisher:main",
+        ],
     },
 )

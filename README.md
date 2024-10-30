@@ -45,28 +45,35 @@ $ ros2 launch mycobot_description mycobot_320pi.launch.py
 ```bash
 $ ros2 launch mycobot_description gazebo_mycobot_320pi.launch.py
 ```
+### Run manually
   - Use the `joint` positions to navigate robot from GUI
   - Alternatively use following commands from terminal
   ```bash
   # Move robot to desired position
   $ ros2 topic pub \
-  arm_controller/joint_trajectory\
-  trajectory_msgs/msg/JointTrajectory\
-  "{joint_names:['joint2_to_joint1', 'joint3_to_joint2', 'joint4_to_joint3', 'joint5_to_joint4', 'joint6_to_joint5', 'joint6output_to_joint6'], points: [{positions: [-1,1,-1,-2,0.5,0], time_from_start: {sec: 0, nanosec: 0}}]}"
+    arm_controller/joint_trajectory\
+    trajectory_msgs/msg/JointTrajectory\
+    "{joint_names:['joint2_to_joint1', 'joint3_to_joint2', 'joint4_to_joint3', 'joint5_to_joint4', 'joint6_to_joint5', 'joint6output_to_joint6'], points: [{positions: [-1,1,-1,-2,0.5,0], time_from_start: {sec: 0, nanosec: 0}}]}"
 
   # Move it back on original position
   $ ros2 topic pub \
-  arm_controller/joint_trajectory\
-  trajectory_msgs/msg/JointTrajectory\
-  "{joint_names:['joint2_to_joint1', 'joint3_to_joint2', 'joint4_to_joint3', 'joint5_to_joint4', 'joint6_to_joint5', 'joint6output_to_joint6'], points: [{positions: [0,0,0,0,0,0], time_from_start: {sec: 0, nanosec: 0}}]}"
-
+    arm_controller/joint_trajectory\
+    trajectory_msgs/msg/JointTrajectory\
+    "{joint_names:['joint2_to_joint1', 'joint3_to_joint2', 'joint4_to_joint3', 'joint5_to_joint4', 'joint6_to_joint5', 'joint6output_to_joint6'], points: [{positions: [0,0,0,0,0,0], time_from_start: {sec: 0, nanosec: 0}}]}"
   ```
   - One should obtain the following picture
   ![alt text](gazebo_rviz_rqt_joint_controller.png)
-  - To stop `Gazebo` (and other programs) by force
-  ```bash
-  $ kill -9 `pgrep -x 'ruby'`
-  ```
+### Run using action server and client
+- Run the script
+```
+$ ros2 run mycobot_description example_joint_publisher 
+```
+
+### Stop everything
+- To stop `Gazebo` (and other programs) by force
+```bash
+$ kill -9 `pgrep -x 'ruby'`
+```
 
 ## Tutorials
 - Refer to [Getting started with ROS2 and myCobot 320](1_getting_started_with_ros2_and_mycobot320.md) (**done** ✅)
