@@ -18,14 +18,15 @@ Tasks that will be done
 
 
 ## 🟢 1. Start robot 
+- Make sure you followed [installation procedure]((1_getting_started_with_ros2_and_mycobot320.md))
 - To start our robot from `my_project` directory
 ```bash
-$ cd my_project
-$ 
+$ sudo apt install git
+$ git clone git@github.com:aheacon/pick_and_place_ros.git # or Download as Zip
+$ cd pick_and_place_ros/my_project
 # Do this before every change
 $ rm -rf build/ install/ log/
-$ rosdep install --from-paths src --ignore-src -r -y
-#All required rosdeps installed successfully
+# $ rosdep install --from-paths src --ignore-src -r -y # don't do this since it will install ignition gazebo for Iron ROS2
 $ colcon build
 Summary: 1 package finished [1.35s]
 $ source install/setup.bash

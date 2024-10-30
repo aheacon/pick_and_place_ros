@@ -71,6 +71,9 @@ https://gazebosim.org/docs/harmonic/install_ubuntu/
   # use gz sim
   # Alternatively install just package
   $ sudo apt update && sudo apt install ros-${ROS_DISTRO}-ros-gzharmonic # add it to source
+  # Check the version
+  $ gz sim --version
+  Gazebo Sim, version 8.6.0
   ```
   - Uninstall
   ```bash
