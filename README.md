@@ -22,7 +22,7 @@ Tasks that will be done
 - To start our robot from `my_project` directory
 ```bash
 $ sudo apt install git
-$ git clone git@github.com:aheacon/pick_and_place_ros.git # or Download as Zip
+$ git clone git@github.com:aheacon/pick_and_place_ros.git -b main --depth 1 # or Download as Zip
 $ cd pick_and_place_ros/my_project
 # Do this before every change
 $ rm -rf build/ install/ log/
