@@ -96,6 +96,13 @@ https://gazebosim.org/docs/harmonic/install_ubuntu/
   - 3. `gz_ros2_control`: We need this plugin to control our robot with `ros2_control` package
   - 4. `rqt_joint_trajectory_controller`
     - [check more](https://wiki.ros.org/rqt_joint_trajectory_controller)
+  - 5. `moveit2`
+    - [check more](https://moveit.picknik.ai/main/index.html) and [more](https://automaticaddison.com/how-to-configure-moveit-2-for-a-simulated-robot-arm/)
+    - [GitHub](https://github.com/moveit/moveit2_tutorials) and [more GH](https://github.com/moveit/moveit_resources/tree/ros2)
+    - [source code](https://github.com/moveit/moveit2/blob/main/moveit_configs_utils/moveit_configs_utils/moveit_configs_builder.py)
+    - For the settings in this project [read this](4_move_it_manual.md)
+  - 6. `rqt_reconfigure` - used to check parameters for different nodes, if they are set correctly from the controller
+     - [check more](https://wiki.ros.org/rqt_reconfigure)
 <details>
   <summary>
     (This is used in our example) Installing ROS2 packages ✅
@@ -127,14 +134,25 @@ https://gazebosim.org/docs/harmonic/install_ubuntu/
   $ cd ../gz_ros2_control_ws && colcon build
   $ source install/setup.bash # put it in ~/.bashrc (full path)
   ```
-</details>
 
-####  4. rqt_joint_trajectory_controller
-```bash
-$ sudo apt-get install ros-${ROS_DISTRO}-rqt-joint-trajectory-controller
-# Use it as
-$ ros2 run rqt_joint_trajectory_controller rqt_joint_trajectory_controller
-```
+  ####  4. rqt_joint_trajectory_controller
+  ```bash
+  $ sudo apt-get install ros-${ROS_DISTRO}-rqt-joint-trajectory-controller
+  # Use it as
+  $ ros2 run rqt_joint_trajectory_controller rqt_joint_trajectory_controller
+  ```
+
+  ####  5. moveit2
+  ```bash
+  # Make sure to remove old versions of ROS_DISRO if any
+  $ sudo apt install ros-$ROS_DISTRO-moveit*
+  ```
+
+  ####  6. rqt-reconfigure
+  ```bash
+  $ sudo apt install ros-$ROS_DISTRO-rqt-reconfigure
+  ```
+</details>
 
 ### 1.5 ⛔ ROS2 Humble installation
 <details>

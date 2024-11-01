@@ -45,7 +45,7 @@ $ ros2 launch mycobot_description mycobot_320pi.launch.py
 ```bash
 $ ros2 launch mycobot_description gazebo_mycobot_320pi.launch.py
 ```
-### Run manually
+### 1.1 Run manually
   - Use the `joint` positions to navigate robot from GUI
   - Alternatively use following commands from terminal
   ```bash
@@ -63,13 +63,16 @@ $ ros2 launch mycobot_description gazebo_mycobot_320pi.launch.py
   ```
   - One should obtain the following picture
   ![alt text](gazebo_rviz_rqt_joint_controller.png)
-### Run using action server and client
+### 1.2 Run using action server and client
 - Run the script
 ```
 $ ros2 run mycobot_description example_joint_publisher 
 ```
 
-### Stop everything
+### 1.3 Run with MoveIt2
+- 
+
+### 1.3Stop everything
 - To stop `Gazebo` (and other programs) by force
 ```bash
 $ kill -9 `pgrep -x 'ruby'`
