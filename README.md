@@ -18,7 +18,7 @@ Tasks that will be done
 
 
 ## 🟢 1. Start robot 
-- Make sure you followed [installation procedure]((1_getting_started_with_ros2_and_mycobot320.md))
+- Make sure you followed [installation procedure](0_ros2_getting_started.md)
 - To start our robot from `my_project` directory
 ```bash
 $ sudo apt install git
